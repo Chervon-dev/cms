@@ -1,0 +1,29 @@
+<?php
+
+use App\Controller\AuthController;
+use App\Controller\MainController;
+use App\Controller\PostController;
+use App\Controller\ProfileController;
+use App\Controller\SubscriptionController;
+
+// Роуты основных страниц (GET)
+$router->get('/', MainController::class . '@showPageIndex');
+$router->get('/post/*', PostController::class . '@showPagePost');
+
+// Роуты для работы в профиле
+$router->get('/profile', ProfileController::class . '@showPageProfile');
+// (POST)
+$router->post('/profile/update/run', ProfileController::class . '@update');
+
+// Рауты для работы с аутентификацией (GET)
+$router->get('/auth/login', AuthController::class . '@showPageLogin');
+$router->get('/auth/signup', AuthController::class . '@showPageSignup');
+$router->get('/auth/logout', AuthController::class . '@logout');
+
+// Рауты для работы с аутентификацией (POST)
+$router->post('/auth/signup/run', AuthController::class . '@registration');
+$router->post('/auth/login/run', AuthController::class . '@login');
+
+// Рауты для работы с подписками (POST)
+$router->post('/subscribe/sign', SubscriptionController::class . '@sign');
+$router->post('/subscribe/unsubscribe', SubscriptionController::class . '@unsubscribe');
