@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\User;
 use App\Validator\LoginValidator;
 use App\Validator\SignupValidator;
 use App\View\View;
@@ -65,20 +66,17 @@ class AuthController
             $confirmPassword, $checkbox
         );
 
-        // Проверяет, если уже есть пользователь с таким Email
-        if ($this->userService->checkUserByEmail($email)) {
-            $validator->setError('email_isset');
-        }
-
         // Валидация
         if (!$validator->validate()) {
             // Получение ошибок
             return $validator->getErrors();
-        } else {
-            // Добавление пользователя
-            $user = $this->userService->add($name, $email, $password);
-            Session::set('userId', $user->id);
         }
+
+        // Добавление пользователя
+        $user = $this->userService->add($name, $email, $password);
+
+        // Обновляется сессия
+        Session::set('userId', $user->id);
 
         // Получение данных об успехе
         return $validator->getSuccess();
@@ -97,8 +95,8 @@ class AuthController
         // Валидатор
         $validator = new LoginValidator($email, $password);
 
-        // Данные пользователя или null
-        $user = $this->userService->getDataByEmail($email);
+        /** @var User $user */
+        $user = $this->userService->getByEmail($email);
 
         if (!$user->id) {
             $validator->setError('not-isset_email');
@@ -111,9 +109,10 @@ class AuthController
         if (!$validator->validate()) {
             // Получение ошибок
             return $validator->getErrors();
-        } else {
-            Session::set('userId', $user['id']);
         }
+
+        // Обновляется сессия
+        Session::set('userId', $user['id']);
 
         // Получение данных об успехе
         return $validator->getSuccess();

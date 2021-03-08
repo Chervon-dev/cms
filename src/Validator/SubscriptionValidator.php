@@ -2,6 +2,7 @@
 
 namespace App\Validator;
 
+use App\Model\Subscription;
 use App\Service\SubscriptionService;
 
 /**
@@ -32,6 +33,11 @@ class SubscriptionValidator extends Validator
      */
     public function validate(): bool
     {
+        // Проверяет, подписан ли данный Email
+        if ($this->checkByEmail($this->email)) {
+            $this->setError('isset_email');
+        }
+
         if ($this->email == '') {
             $this->setError('empty_email');
         }
@@ -43,5 +49,17 @@ class SubscriptionValidator extends Validator
         // Устанавливает данные об успехе
         $this->setSuccessMessage(isAuthorized());
         return $this->checkErrors();
+    }
+
+    /**
+     * Проверяет, подписан ли пользователь (по Email)
+     * @param string $email
+     * @return bool
+     */
+    public function checkByEmail(string $email): bool
+    {
+        return Subscription::query()
+            ->where('email', $email)
+            ->exists();
     }
 }

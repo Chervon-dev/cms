@@ -29,7 +29,7 @@ class ProfileController
      * Выводит страницу (Profile)
      * @return View
      */
-    public function showPageProfile(): View
+    public function showPage(): View
     {
         return new View(
             'profile',

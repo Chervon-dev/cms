@@ -12,21 +12,6 @@ use App\Model\Subscription;
 class SubscriptionService
 {
     /**
-     * Проверяет, подписан ли пользователь (по Email)
-     * @param string $email
-     * @return bool
-     */
-    public function checkByEmail(string $email): bool
-    {
-        // Возвращает данные о подписке пользователя
-        $subscribe = Subscription::query()
-            ->where('email', '=', $email)
-            ->first();
-
-        return !empty($subscribe);
-    }
-
-    /**
      * Добавляет подписку
      * @param string $email
      * @return void

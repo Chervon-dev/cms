@@ -7,11 +7,11 @@ use App\Controller\ProfileController;
 use App\Controller\SubscriptionController;
 
 // Роуты основных страниц (GET)
-$router->get('/', MainController::class . '@showPageIndex');
-$router->get('/post/*', PostController::class . '@showPagePost');
+$router->get('/', MainController::class . '@showPage');
+$router->get('/post/*', PostController::class . '@showPage');
 
 // Роуты для работы в профиле
-$router->get('/profile', ProfileController::class . '@showPageProfile');
+$router->get('/profile', ProfileController::class . '@showPage');
 // (POST)
 $router->post('/profile/update/run', ProfileController::class . '@update');
 

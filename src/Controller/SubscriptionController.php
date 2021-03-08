@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Service\SubscriptionService;
-use App\Service\UserService;
 use App\Validator\SubscriptionValidator;
 
 /**
@@ -19,17 +18,11 @@ class SubscriptionController
     private SubscriptionService $subscriptionService;
 
     /**
-     * @var UserService
-     */
-    private UserService $userService;
-
-    /**
      * AuthController constructor.
      */
     public function __construct()
     {
         $this->subscriptionService = new SubscriptionService();
-        $this->userService = new UserService();
     }
 
     /**
@@ -44,19 +37,14 @@ class SubscriptionController
         // Валидатор
         $validator = new SubscriptionValidator($email);
 
-        // Проверяет, подписан ли данный Email
-        if ($this->subscriptionService->checkByEmail($email)) {
-            $validator->setError('isset_email');
-        }
-
         // Валидация
-        if ($validator->validate()) {
-            // Добавление подписки
-            $this->subscriptionService->add($email);
-        } else {
+        if (!$validator->validate()) {
             // Получение ошибок
             return $validator->getErrors();
         }
+
+        // Добавление подписки
+        $this->subscriptionService->add($email);
 
         // Получение данных об успехе
         return $validator->getSuccess();
@@ -68,6 +56,8 @@ class SubscriptionController
      */
     public function unsubscribe(): void
     {
-        $this->subscriptionService->delete(getActiveEmail());
+        $this->subscriptionService->delete(
+            getActiveEmail()
+        );
     }
 }

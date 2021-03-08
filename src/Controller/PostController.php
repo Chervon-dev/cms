@@ -16,7 +16,7 @@ class PostController
      * @param $id
      * @return View
      */
-    public function showPagePost($id): View
+    public function showPage($id): View
     {
         return new View('post', ['title' => 'Post', 'id' => $id]);
     }

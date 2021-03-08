@@ -15,7 +15,7 @@ class MainController
      * Выводит страницу (Index)
      * @return View
      */
-    public function showPageIndex(): View
+    public function showPage(): View
     {
         return new View('index', ['title' => DEFAULT_TITLE]);
     }

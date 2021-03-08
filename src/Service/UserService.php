@@ -18,7 +18,7 @@ class UserService
      * @param string $email
      * @return Model|Builder|null
      */
-    public function getDataByEmail(string $email): Model|Builder|null
+    public function getByEmail(string $email): Model|Builder|null
     {
         return User::query()
                 ->where('email', $email)
@@ -34,16 +34,6 @@ class UserService
         return User::query()
             ->find(getUserId())
             ->first();
-    }
-
-    /**
-     * Проверяет, существует ли пользователь (по Email)
-     * @param string $email
-     * @return bool
-     */
-    public function checkUserByEmail(string $email): bool
-    {
-        return User::query()->where('email', $email)->exists();
     }
 
     /**

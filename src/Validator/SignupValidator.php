@@ -2,6 +2,7 @@
 
 namespace App\Validator;
 
+use App\Model\User;
 use App\Service\UserService;
 
 /**
@@ -72,6 +73,9 @@ class SignupValidator extends Validator
         if ($this->email == '') {
             $this->setError('empty_email');
 
+        } elseif ($this->checkByEmail($this->email)) {
+            $this->setError('email_isset');
+
         } elseif (!isTrueEmailAddress($this->email)) {
             $this->setError('wrong_email');
         }
@@ -91,5 +95,15 @@ class SignupValidator extends Validator
         // Устанавливает данные об успехе
         $this->setSuccessMessage('You have successfully registered!');
         return $this->checkErrors();
+    }
+
+    /**
+     * Проверяет, существует ли пользователь (по Email)
+     * @param string $email
+     * @return bool
+     */
+    public function checkByEmail(string $email): bool
+    {
+        return User::query()->where('email', $email)->exists();
     }
 }
