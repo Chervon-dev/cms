@@ -5,14 +5,14 @@ namespace App\Validator;
 use App\Model\User;
 
 /**
- * Валидатор для регистрации
- * Class SignupValidator
+ * Валидатор данных профиля
+ * Class ProfileValidator
  * @package App\Validator
  */
-class SignupValidator extends Validator
+class ProfileValidator extends Validator
 {
     /**
-     * Выполняет валидацию регистрации
+     * Валидация данных профиля
      * @return bool
      */
     public function rules(): bool
@@ -20,13 +20,10 @@ class SignupValidator extends Validator
         $rules = [
             'name' => 'required',
             'email' => 'required|email|exists:' . User::class . '.email',
-            'password' => 'required',
-            'confirm_password' => 'required|confirm:password',
-            'checkbox' => 'checkboxType:checked',
         ];
 
         // Устанавливает данные об успехе
-        $this->setSuccessMessage('You have successfully registered!');
+        $this->setSuccessMessage('You have successfully updated!');
         return $this->validate($rules);
     }
 }

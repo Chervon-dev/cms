@@ -13,7 +13,8 @@ $router->get('/post/*', PostController::class . '@showPage');
 // Роуты для работы в профиле
 $router->get('/profile', ProfileController::class . '@showPage');
 // (POST)
-$router->post('/profile/update/run', ProfileController::class . '@update');
+$router->post('/profile/update/data', ProfileController::class . '@updateData');
+$router->post('/profile/update/avatar', ProfileController::class . '@updateAvatar');
 
 // Рауты для работы с аутентификацией (GET)
 $router->get('/auth/login', AuthController::class . '@showPageLogin');

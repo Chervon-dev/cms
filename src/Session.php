@@ -42,6 +42,7 @@ final class Session
     }
 
     /**
+     * Устанавливает параметры сессии
      * @param int $time
      * @param string|null $path
      * @param string|null $domain

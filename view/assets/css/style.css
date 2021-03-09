@@ -3064,6 +3064,7 @@ button.list-group-item:hover {
 #updateUser:active,
 #updateUser:focus {
     outline: none;
+    color: #ffffff;
 }
 
 .profile_form {
@@ -3155,4 +3156,34 @@ button.list-group-item:hover {
     background: rgba(0, 0, 0, 0.75);
     font-size: 14px;
     text-align: center;
+}
+
+.btn-profile {
+    float: left!important;
+}
+
+.error_profileUpdate {
+    font-family: 'Baloo Thambi', sans-serif;
+    color: red;
+    font-size: 14px;
+    margin: -18px 0 -16px 0;
+    padding: 0;
+}
+
+.alert {
+    font-family: 'Baloo Thambi', sans-serif!important;
+    width: 350px;
+    position: fixed;
+    right: -350px;
+    z-index: 1;
+    top: 100px;
+    transition: .5s;
+}
+
+.alert-active {
+    transform: translateX(-320px);
+}
+
+.alert-exit {
+    transform: translateX(320px);
 }

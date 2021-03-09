@@ -14,6 +14,11 @@ abstract class Validator
     /**
      * @var array
      */
+    protected array $data = [];
+
+    /**
+     * @var array
+     */
     protected array $errors = [];
 
     /**
@@ -22,42 +27,59 @@ abstract class Validator
     protected string $successMessage;
 
     /**
-     * @var JsonResponse
+     * @var Rules
      */
-    protected JsonResponse $response;
+    protected Rules $rules;
 
     /**
      * Validator constructor.
+     * @param array $data
      */
-    public function __construct()
+    public function __construct(array $data)
     {
-        $this->response = new JsonResponse();
+        $this->data = $data;
+        $this->rules = new Rules($this);
     }
 
     /**
-     * Выполняет валидацию
+     * Выполняет валидацию авторизации
+     */
+    abstract protected function rules();
+
+    /**
+     * @param array $rules
      * @return bool
      */
-    abstract public function validate(): bool;
+    protected function validate(array $rules): bool
+    {
+        foreach ($this->data as $key => $value) {
+
+            if (isset($rules[$key])) {
+                $rule = $rules[$key];
+                $rulesList = explode('|', $rule);
+                $this->runCheckRules($key, $value, $rulesList);
+            }
+        }
+
+        return $this->checkErrors();
+    }
 
     /**
      * Возвращает ошибки
-     * @return string|null
+     * @return JsonResponse
      */
-    public function getErrors(): string|null
+    public function getErrors(): JsonResponse
     {
-        $this->response->setData($this->errors);
-        return $this->response->render();
+        return new JsonResponse($this->errors);
     }
 
     /**
      * Возвращает данные об успехе
-     * @return string
+     * @return JsonResponse
      */
-    public function getSuccess(): string
+    public function getSuccess(): JsonResponse
     {
-        $this->response->setData($this->successMessage);
-        return $this->response->render();
+        return new JsonResponse($this->successMessage);
     }
 
     /**
@@ -85,5 +107,63 @@ abstract class Validator
     protected function checkErrors(): bool
     {
         return empty($this->errors);
+    }
+
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @param array $rules
+     * @return void
+     */
+    private function runCheckRules(string $key, mixed $value, array $rules): void
+    {
+        foreach ($rules as $ruleItem) {
+
+            if ($ruleItem === 'required') {
+                $this->rules->required($key, $value);
+            }
+
+            if ($ruleItem === 'email') {
+                $this->rules->email($value);
+            }
+
+            if (str_starts_with($ruleItem, 'exists:')) {
+
+                $params = getStringAfterCharacter($ruleItem, ':');
+                list($table, $column) = explode('.', $params);
+                $this->rules->exists($value, $table, $column);
+            }
+
+            if (str_starts_with($ruleItem, 'checkboxType:')) {
+
+                $type = getStringAfterCharacter($ruleItem, ':');
+                $this->rules->checked($value, $type);
+            }
+
+            if (str_starts_with($ruleItem, 'confirm:')) {
+
+                $confirmedField = getStringAfterCharacter($ruleItem, ':');
+                $confirmedValue = $this->data[$confirmedField];
+                $this->rules->confirm($value, $confirmedField, $confirmedValue);
+            }
+
+            if (str_starts_with($ruleItem, 'type:')) {
+
+                $type = getStringAfterCharacter($ruleItem, ':');
+                $this->rules->checkType($value, $type);
+            }
+
+            if (str_starts_with($ruleItem, 'maxsize:')) {
+
+                $size = getStringAfterCharacter($ruleItem, ':');
+                $this->rules->checkSize($value, $size);
+            }
+
+            if (str_starts_with($ruleItem, 'error:')) {
+
+                $errorValue = getStringAfterCharacter($ruleItem, ':');
+                $this->rules->checkError($value, $errorValue);
+            }
+        }
     }
 }

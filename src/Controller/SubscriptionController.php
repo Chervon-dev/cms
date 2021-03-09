@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\JsonResponse;
 use App\Service\SubscriptionService;
 use App\Validator\SubscriptionValidator;
 
@@ -27,24 +28,23 @@ class SubscriptionController
 
     /**
      * Регестрирует подписку (подписывает пользователя)
-     * @return bool|string
+     * @return JsonResponse
      */
-    public function sign(): bool|string
+    public function sign(): JsonResponse
     {
-        // Инициализация переменных
-        $email = strip_tags($_POST['email']);
+        $data = ['email' => strip_tags($_POST['email'])];
 
         // Валидатор
-        $validator = new SubscriptionValidator($email);
+        $validator = new SubscriptionValidator($data);
 
         // Валидация
-        if (!$validator->validate()) {
+        if (!$validator->rules()) {
             // Получение ошибок
             return $validator->getErrors();
         }
 
         // Добавление подписки
-        $this->subscriptionService->add($email);
+        $this->subscriptionService->add($data['email']);
 
         // Получение данных об успехе
         return $validator->getSuccess();

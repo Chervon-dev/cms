@@ -4,8 +4,7 @@ document.querySelectorAll("#img_avatar").forEach(inputElement => {
 
     if (avatarName) {
 
-        const fileAvatar = new File(["foo"], 'df');
-
+        const fileAvatar = new File(["blob"], avatarName, {type: "image/jpeg"});
         dropZoneElement.querySelector(".avatar_img-prompt").remove();
 
         let thumbnailElement = dropZoneElement.querySelector(".avatar_img-thumb");
@@ -18,11 +17,6 @@ document.querySelectorAll("#img_avatar").forEach(inputElement => {
 
         thumbnailElement.style.backgroundImage = `url('${avatarPath}')`;
         thumbnailElement.dataset.label = mySubStr(avatarName);
-
-        const dT = new ClipboardEvent('').clipboardData || new DataTransfer();
-        dT.items.add(fileAvatar);
-        inputElement.files = dT.files;
-        console.log(inputElement.files);
     }
 
     dropZoneElement.addEventListener("click", e => {
@@ -33,6 +27,7 @@ document.querySelectorAll("#img_avatar").forEach(inputElement => {
         if (inputElement.files.length) {
             updateThumbnail(dropZoneElement, inputElement.files[0]);
         }
+        user.updateAvatar();
     });
 
     dropZoneElement.addEventListener("dragover", e => {
@@ -57,6 +52,7 @@ document.querySelectorAll("#img_avatar").forEach(inputElement => {
 
         dropZoneElement.classList.remove("qwerty--over");
 
+        user.updateAvatar();
     });
 });
 

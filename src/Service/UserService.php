@@ -27,13 +27,12 @@ class UserService
 
     /**
      * Возвращает все данные об активном пользователя
-     * @return Builder|Model
+     * @return Builder|Model|null
      */
-    public function getActiveUserData(): Model|Builder
+    public function getActiveUserData(): Model|Builder|null
     {
-        return User::query()
-            ->find(getUserId())
-            ->first();
+        $data = User::query()->find(getUserId());
+        return $data ?? null;
     }
 
     /**
@@ -53,5 +52,47 @@ class UserService
         ]);
 
         return $user;
+    }
+
+    /**
+     * Обновляет данные пользователя
+     * @param int $id
+     * @param string $name
+     * @param string $email
+     * @param string $password
+     * @param string $about
+     * @return void
+     */
+    public function updateData(
+        int $id,
+        string $name,
+        string $email,
+        string $password,
+        string $about): void
+    {
+        $update = [
+            'name' => $name,
+            'email' => $email,
+            'about' => $about,
+        ];
+
+        if ($password !== '') {
+            $update['password'] = password_hash($password, PASSWORD_DEFAULT);
+        }
+
+        User::query()->find($id)->update($update);
+    }
+
+    /**
+     * Обновляет аватар пользователя
+     * @param int $id
+     * @param string $avatar
+     * @return void
+     */
+    public function updateAvatar(int $id, string $avatar): void
+    {
+        User::query()->find($id)->update([
+            'avatar' => $avatar
+        ]);
     }
 }

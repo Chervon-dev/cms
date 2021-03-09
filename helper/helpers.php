@@ -1,5 +1,7 @@
 <?php
 
+use App\Model\Subscription;
+use App\Model\User;
 use App\Service\UserService;
 use App\Session;
 use App\View\Theme;
@@ -62,19 +64,19 @@ function isAuthPage(): bool
 
 /**
  * Возвращает Email активного пользователя
- * @return string
+ * @return string|null
  */
-function getActiveEmail(): string
+function getActiveEmail(): ?string
 {
     $userService = new UserService();
-    return $userService->getActiveUserData()->email;
+    return $userService->getActiveUserData()->email ?? null;
 }
 
 /**
  * Возвращает Email активного пользователя
- * @return string
+ * @return string|null
  */
-function getUserId(): string
+function getUserId(): ?string
 {
     return Session::get('userId');
 }
@@ -97,4 +99,25 @@ function isActivePage(string $uri): bool
 function isTrueEmailAddress(string $email): bool
 {
     return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+/**
+ * Проверяет, подписан ли пользователь (по Email)
+ * @param string $email
+ * @return bool
+ */
+function checkSubscribeByEmail(string $email): bool
+{
+    return Subscription::query()->where('email', $email)->exists();
+}
+
+/**
+ * Возвращает строку после первого вхождения символа
+ * @param string $string
+ * @param string $character
+ * @return bool|string
+ */
+function getStringAfterCharacter(string $string, string $character): bool|string
+{
+    return substr(strrchr($string, $character), 1);
 }

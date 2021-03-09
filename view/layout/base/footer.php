@@ -1,10 +1,3 @@
-<?php
-
-use App\Service\SubscriptionService;
-$subscriptionService = new SubscriptionService();
-
-?>
-
 <script>
     const isAuth = <?= isAuthorized() ? 1 : 0 ?>;
 </script>
@@ -19,7 +12,7 @@ $subscriptionService = new SubscriptionService();
 <script src="/view/assets/js/ajax/subscribe.js"></script>
 <script src="/view/assets/js/drag_and_drop.js"></script>
 
-<?php if (isAuthorized() && $subscriptionService->checkByEmail(getActiveEmail())): ?>
+<?php if (isAuthorized() && checkSubscribeByEmail(getActiveEmail())): ?>
 
     <script>
         updateButton(document.getElementById("subscription"))

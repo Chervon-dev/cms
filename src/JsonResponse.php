@@ -9,36 +9,25 @@ namespace App;
 class JsonResponse implements Renderable
 {
     /**
-     * @var string
+     * @var mixed
      */
-    private string $data = '';
+    private mixed $data = '';
 
     /**
-     * Возвращает Json (отформатированные данные)
-     * @param $data
-     * @return string
+     * JsonResponse constructor.
+     * @param mixed $data
      */
-    private function toJson($data): string
+    public function __construct(mixed $data)
     {
-        return empty($data) ? '' : json_encode($data);
-    }
-
-    /**
-     * Добавляет Json данные
-     * @param array|string $data
-     * @return void
-     */
-    public function setData(array|string $data): void
-    {
-        $this->data .= $this->toJson($data);
+        $this->data = $data;
     }
 
     /**
      * Возвращает Json данные
-     * @return string
+     * @return void
      */
-    public function render(): string
+    public function render(): void
     {
-        return $this->data;
+        echo json_encode($this->data);
     }
 }
