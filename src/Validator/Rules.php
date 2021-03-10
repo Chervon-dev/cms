@@ -47,7 +47,7 @@ class Rules
      * @param string $checkBox
      * @param string $checkedValue
      */
-    public function checked(string $checkBox, string $checkedValue): void
+    public function checkbox(string $checkBox, string $checkedValue): void
     {
         if ($checkBox !== $checkedValue) {
             $this->validator->setError('site-rules_unchecked');
@@ -85,7 +85,7 @@ class Rules
      * @param string $type
      * @return void
      */
-    public function checkType(array $file, string $type): void
+    public function checkFileType(array $file, string $type): void
     {
         $fileType = mime_content_type($file['tmp_name']);
         if (!str_starts_with($fileType, $type . '/')) {
@@ -98,7 +98,7 @@ class Rules
      * @param string $size
      * @return void
      */
-    public function checkSize(array $file, string $size): void
+    public function checkFileSize(array $file, string $size): void
     {
         if ($file['size'] > $size) {
             $this->validator->setError('error_size');
@@ -107,10 +107,10 @@ class Rules
 
     /**
      * @param array $file
-     * @param string $size
+     * @param string $errorValue
      * @return void
      */
-    public function checkError(array $file, string $errorValue): void
+    public function checkFileError(array $file, string $errorValue): void
     {
         if ($file['error'] !== $errorValue) {
             $this->validator->setError('error_upload');

@@ -126,6 +126,9 @@ const user = {
                 if (result.includes('"empty_email"')) {
                     showAuthError(emailError, email, 'Email field cannot be empty');
 
+                } else if (result.includes('"wrong_email"')) {
+                    showAuthError(emailError, email, 'Invalid email type');
+
                 } else if (result.includes('"not-isset_email"')) {
                     showAuthError(emailError, email, 'This email is not already registered');
 

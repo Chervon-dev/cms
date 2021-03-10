@@ -55,10 +55,15 @@ const subscription = {
             contentType: false,
             success: function (result) {
 
+                if (result === '"Success!"') {
+                    location.reload();
+                }
+
                 if (isAuth === 1) {
                     updateButton(subscriptionButton);
 
                 } else {
+
                     if (result.includes('"empty_email"')) {
                         showSubscribeError(emailError, email, 'Email field cannot be empty');
 
@@ -67,10 +72,6 @@ const subscription = {
 
                     } else if (result.includes('"wrong_email"')) {
                         showSubscribeError(emailError, email, 'Invalid email type');
-                    }
-
-                    if (!result) {
-                        location.reload();
                     }
                 }
             }

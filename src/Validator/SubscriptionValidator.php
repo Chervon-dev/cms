@@ -23,7 +23,7 @@ class SubscriptionValidator extends Validator
         ];
 
         // Устанавливает данные об успехе
-        $this->setSuccessMessage(isAuthorized());
+        $this->setSuccessMessage('Success!');
         return $this->validate($rules);
     }
 }

@@ -22,7 +22,7 @@ class SignupValidator extends Validator
             'email' => 'required|email|exists:' . User::class . '.email',
             'password' => 'required',
             'confirm_password' => 'required|confirm:password',
-            'checkbox' => 'checkboxType:checked',
+            'checkbox' => 'checkbox:checked',
         ];
 
         // Устанавливает данные об успехе

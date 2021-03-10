@@ -3,6 +3,15 @@
 namespace App\Validator;
 
 use App\JsonResponse;
+use App\Rule\CheckboxRule;
+use App\Rule\ConfirmRule;
+use App\Rule\EmailRule;
+use App\Rule\ExistsRule;
+use App\Rule\FileErrorRule;
+use App\Rule\FileSizeRule;
+use App\Rule\FileTypeRule;
+use App\Rule\RequiredRule;
+use App\Rule\Rule;
 
 /**
  * Абстракный валидатор
@@ -27,9 +36,9 @@ abstract class Validator
     protected string $successMessage;
 
     /**
-     * @var Rules
+     * @var array
      */
-    protected Rules $rules;
+    protected array $rules = [];
 
     /**
      * Validator constructor.
@@ -38,7 +47,6 @@ abstract class Validator
     public function __construct(array $data)
     {
         $this->data = $data;
-        $this->rules = new Rules($this);
     }
 
     /**
@@ -57,7 +65,7 @@ abstract class Validator
             if (isset($rules[$key])) {
                 $rule = $rules[$key];
                 $rulesList = explode('|', $rule);
-                $this->runCheckRules($key, $value, $rulesList);
+                $this->registerRules($key, $value, $rulesList);
             }
         }
 
@@ -110,60 +118,115 @@ abstract class Validator
     }
 
     /**
+     * Регестрирует правила
      * @param string $key
-     * @param mixed $value
-     * @param array $rules
+     * @param mixed $value Значение из полученного массива
+     * @param array $rules Массив правил для поля
      * @return void
      */
-    private function runCheckRules(string $key, mixed $value, array $rules): void
+    private function registerRules(string $key, mixed $value, array $rules): void
     {
         foreach ($rules as $ruleItem) {
 
             if ($ruleItem === 'required') {
-                $this->rules->required($key, $value);
+                // Добавляем правило
+                $this->addRule(
+                    new RequiredRule($this, $key, $value)
+                );
             }
 
             if ($ruleItem === 'email') {
-                $this->rules->email($value);
+                // Добавляем правило
+                $this->addRule(
+                    new EmailRule($this, $value)
+                );
+            }
+
+            if (str_starts_with($ruleItem, 'error:')) {
+                // Добавляем правило
+                $this->addRule(
+                    new FileErrorRule($this, $value['error'])
+                );
+            }
+
+            if (str_starts_with($ruleItem, 'maxsize:')) {
+
+                $size = getStringAfterCharacter($ruleItem, ':');
+
+                // Добавляем правило
+                $this->addRule(
+                    new FileSizeRule($this, $value['size'], $size)
+                );
             }
 
             if (str_starts_with($ruleItem, 'exists:')) {
 
                 $params = getStringAfterCharacter($ruleItem, ':');
                 list($table, $column) = explode('.', $params);
-                $this->rules->exists($value, $table, $column);
+
+                // Добавляем правило
+                $this->addRule(
+                    new ExistsRule($this, $value, $table, $column)
+                );
             }
 
-            if (str_starts_with($ruleItem, 'checkboxType:')) {
+            if (str_starts_with($ruleItem, 'checkbox:')) {
 
                 $type = getStringAfterCharacter($ruleItem, ':');
-                $this->rules->checked($value, $type);
+
+                // Добавляем правило
+                $this->addRule(
+                    new CheckboxRule($this, $value, $type)
+                );
             }
 
             if (str_starts_with($ruleItem, 'confirm:')) {
 
                 $confirmedField = getStringAfterCharacter($ruleItem, ':');
                 $confirmedValue = $this->data[$confirmedField];
-                $this->rules->confirm($value, $confirmedField, $confirmedValue);
+
+                // Добавляем правило
+                $this->addRule(new ConfirmRule(
+                    $this,
+                    $value,
+                    $confirmedField,
+                    $confirmedValue
+                ));
             }
 
             if (str_starts_with($ruleItem, 'type:')) {
 
+                $fileType = mime_content_type($value['tmp_name']);
                 $type = getStringAfterCharacter($ruleItem, ':');
-                $this->rules->checkType($value, $type);
-            }
 
-            if (str_starts_with($ruleItem, 'maxsize:')) {
-
-                $size = getStringAfterCharacter($ruleItem, ':');
-                $this->rules->checkSize($value, $size);
-            }
-
-            if (str_starts_with($ruleItem, 'error:')) {
-
-                $errorValue = getStringAfterCharacter($ruleItem, ':');
-                $this->rules->checkError($value, $errorValue);
+                // Добавляем правило
+                $this->addRule(
+                    new FileTypeRule($this, $fileType, $type)
+                );
             }
         }
+
+        $this->runRules();
+    }
+
+    /**
+     * // Запускает проверку всех правил
+     * @return void
+     */
+    private function runRules()
+    {
+        foreach ($this->rules as $rule) {
+            $rule->run();
+        }
+    }
+
+    /**
+     * Регестрирует правило
+     * @param Rule $rule
+     * @return void
+     */
+    private function addRule(Rule $rule): void
+    {
+        $this->rules[] = $rule;
     }
 }
