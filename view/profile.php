@@ -48,7 +48,7 @@ $avatarName = $user->avatar;
 
                 <div class="my_avatar">
                     <div class="qwerty">
-                        <div class="avatar_img-prompt" data-label="<?= $avatarName ?>">
+                        <div class="avatar_img-prompt">
                             Drop file hear and click to upload
                         </div>
                         <input type="file" id="img_avatar" class="img_avatar-input" accept="image/jpeg"/>

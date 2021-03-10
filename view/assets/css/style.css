@@ -3158,6 +3158,10 @@ button.list-group-item:hover {
     text-align: center;
 }
 
+.avatar_img-thumb.tool::after {
+    padding: 0;
+}
+
 .btn-profile {
     float: left!important;
 }

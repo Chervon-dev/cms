@@ -79,14 +79,12 @@ class ProfileController
 
     /**
      * Обновляет аватар пользователя
-     * @return string|null
+     * @return JsonResponse
      */
-    public function updateAvatar(): ?string
+    public function updateAvatar(): JsonResponse
     {
-        $avatar = $_FILES['avatar'];
         $userId = $_POST['userId'];
-        $tmp_name = $avatar['tmp_name'];
-        $name = $avatar['name'];
+        $tmp_name = $_FILES['avatar']['tmp_name'];
 
         // Валидатор
         $validator = new AvatarValidator($_FILES);
@@ -96,11 +94,11 @@ class ProfileController
             return $validator->getErrors();
         }
 
-        // Загрузка аватара на сервер
-        $this->uploadAvatar($userId, $name, $tmp_name);
+        // Загружает аватар на сервер и возвращает имя загруженного файла
+        $avatarName = $this->uploadAvatar($userId, $tmp_name);
 
         // Загрузка аватара на сервер
-        $this->userService->updateAvatar((int) $userId, $name);
+        $this->userService->updateAvatar((int) $userId, $avatarName);
 
         return $validator->getSuccess();
     }
@@ -108,12 +106,13 @@ class ProfileController
     /**
      * Загружаешь аватар на сервер
      * @param string $userId
-     * @param string $name
      * @param string $tmpName
-     * @return void
+     * @return string
      */
-    private function uploadAvatar(string $userId, string $name, string $tmpName): void
+    private function uploadAvatar(string $userId, string $tmpName): string
     {
-        // upload avatar code
+        $name = $userId . '.jpg';
+        move_uploaded_file($tmpName, AVATAR_DIR . $name);
+        return $name;
     }
 }

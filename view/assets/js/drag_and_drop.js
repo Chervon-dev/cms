@@ -4,7 +4,6 @@ document.querySelectorAll("#img_avatar").forEach(inputElement => {
 
     if (avatarName) {
 
-        const fileAvatar = new File(["blob"], avatarName, {type: "image/jpeg"});
         dropZoneElement.querySelector(".avatar_img-prompt").remove();
 
         let thumbnailElement = dropZoneElement.querySelector(".avatar_img-thumb");
@@ -15,8 +14,9 @@ document.querySelectorAll("#img_avatar").forEach(inputElement => {
             dropZoneElement.appendChild(thumbnailElement);
         }
 
+        thumbnailElement.classList.toggle("tool");
+
         thumbnailElement.style.backgroundImage = `url('${avatarPath}')`;
-        thumbnailElement.dataset.label = mySubStr(avatarName);
     }
 
     dropZoneElement.addEventListener("click", e => {
@@ -77,6 +77,7 @@ function updateThumbnail(dropZoneElement, file) {
         dropZoneElement.appendChild(thumbnailElement);
     }
 
+    thumbnailElement.classList.remove("tool");
     thumbnailElement.dataset.label = mySubStr(file.name);
 
     if (file.type.startsWith("image/")) {

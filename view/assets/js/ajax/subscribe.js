@@ -55,14 +55,14 @@ const subscription = {
             contentType: false,
             success: function (result) {
 
-                if (result === '"Success!"') {
-                    location.reload();
-                }
-
                 if (isAuth === 1) {
                     updateButton(subscriptionButton);
 
                 } else {
+
+                    if (result === '"Success!"') {
+                        location.reload();
+                    }
 
                     if (result.includes('"empty_email"')) {
                         showSubscribeError(emailError, email, 'Email field cannot be empty');
