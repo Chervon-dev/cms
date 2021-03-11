@@ -8,13 +8,14 @@ use App\Service\UserService;
 use App\Validator\AvatarValidator;
 use App\Validator\ProfileValidator;
 use App\View\View;
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * Контроллер для работы с профилем (ЛК)
- * Class ProfileController
+ * Контроллер для работы с пользователями
+ * Class UserController
  * @package App\Controller
  */
-class ProfileController
+class UserController
 {
     /**
      * @var UserService
@@ -34,19 +35,20 @@ class ProfileController
      * @return View
      * @throws NotFoundException
      */
-    public function showPageProfile(): View
+    public function me(): View
     {
-        $userData = $this->userService->getById(
+        /** @var Model $user */
+        $user = $this->userService->getById(
             getActiveUserId()
         );
 
-        if ($userData) {
+        if ($user) {
             return new View(
                 'profile',
                 [
                     'title' => 'Personal Area',
                     // Данные об активном пользователе
-                    'user' => $userData
+                    'user' => $user
                 ]
             );
         }
@@ -56,12 +58,13 @@ class ProfileController
 
     /**
      * Выводит страницу (user-info)
-     * @param string|int $id
+     * @param int $id
      * @return View
      * @throws NotFoundException
      */
-    public function showPageUserInfo(string|int $id): View
+    public function show(int $id): View
     {
+        /** @var Model $user */
         $userData = $this->userService->getById($id);
 
         if ($userData) {
@@ -82,7 +85,7 @@ class ProfileController
      * Обновляет данные о пользователе
      * @return JsonResponse
      */
-    public function updateData(): JsonResponse
+    public function update(): JsonResponse
     {
         $data = [
             'id' => (int)$_POST['userId'],

@@ -3,7 +3,7 @@
 use App\Controller\AuthController;
 use App\Controller\MainController;
 use App\Controller\PostController;
-use App\Controller\ProfileController;
+use App\Controller\UserController;
 use App\Controller\SubscriptionController;
 
 // Роуты основных страниц (GET)
@@ -11,11 +11,11 @@ $router->get('/', MainController::class . '@showPage');
 $router->get('/post/*', PostController::class . '@showPage');
 
 // Роуты для работы в профиле
-$router->get('/profile', ProfileController::class . '@showPageProfile');
-$router->get('/users/*', ProfileController::class . '@showPageUserInfo');
+$router->get('/profile', UserController::class . '@me');
+$router->get('/users/*', UserController::class . '@show');
 // (POST)
-$router->post('/profile/update/data', ProfileController::class . '@updateData');
-$router->post('/profile/update/avatar', ProfileController::class . '@updateAvatar');
+$router->post('/profile/update/data', UserController::class . '@update');
+$router->post('/profile/update/avatar', UserController::class . '@updateAvatar');
 
 // Рауты для работы с аутентификацией (GET)
 $router->get('/auth/login', AuthController::class . '@showPageLogin');
