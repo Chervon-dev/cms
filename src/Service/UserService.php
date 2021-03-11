@@ -27,11 +27,12 @@ class UserService
 
     /**
      * Возвращает все данные об активном пользователя
+     * @param string|int $id
      * @return Builder|Model|null
      */
-    public function getActiveUserData(): Model|Builder|null
+    public function getById(string|int $id): Model|Builder|null
     {
-        $data = User::query()->find(getUserId());
+        $data = User::query()->find($id);
         return $data ?? null;
     }
 

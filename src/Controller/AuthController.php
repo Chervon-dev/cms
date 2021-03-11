@@ -102,6 +102,7 @@ class AuthController
         /** @var User $user */
         $user = $this->userService->getByEmail($data['email']);
 
+        // Валидация
         if (!isset($user->id)) {
             $validator->setError('not-isset_email');
 

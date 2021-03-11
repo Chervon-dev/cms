@@ -16,7 +16,7 @@ class AvatarValidator extends Validator
     public function rules(): bool
     {
         $rules = [
-            'avatar' => 'file|type:image|maxsize:2097152|error:0'
+            'avatar' => 'file|type:image|maxsize:2097152|error'
         ];
 
         // Устанавливает данные об успехе

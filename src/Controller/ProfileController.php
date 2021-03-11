@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Exception\NotFoundException;
 use App\JsonResponse;
 use App\Service\UserService;
 use App\Validator\AvatarValidator;
@@ -31,17 +32,50 @@ class ProfileController
     /**
      * Выводит страницу (Profile)
      * @return View
+     * @throws NotFoundException
      */
-    public function showPage(): View
+    public function showPageProfile(): View
     {
-        return new View(
-            'profile',
-            [
-                'title' => 'Personal Area',
-                // Данные об активном пользователе
-                'user' => $this->userService->getActiveUserData()
-            ]
+        $userData = $this->userService->getById(
+            getActiveUserId()
         );
+
+        if ($userData) {
+            return new View(
+                'profile',
+                [
+                    'title' => 'Personal Area',
+                    // Данные об активном пользователе
+                    'user' => $userData
+                ]
+            );
+        }
+
+        throw new NotFoundException();
+    }
+
+    /**
+     * Выводит страницу (user-info)
+     * @param string|int $id
+     * @return View
+     * @throws NotFoundException
+     */
+    public function showPageUserInfo(string|int $id): View
+    {
+        $userData = $this->userService->getById($id);
+
+        if ($userData) {
+            return new View(
+                'user-info',
+                [
+                    'title' => $userData->name,
+                    // Данные о пользователе
+                    'user' => $userData
+                ]
+            );
+        }
+
+        throw new NotFoundException();
     }
 
     /**
@@ -66,6 +100,7 @@ class ProfileController
             return $validator->getErrors();
         }
 
+        // Обновление данных в БД
         $this->userService->updateData(
             $data['id'],
             $data['name'],

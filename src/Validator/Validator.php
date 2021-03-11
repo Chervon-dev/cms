@@ -142,7 +142,7 @@ abstract class Validator
                 );
             }
 
-            if (str_starts_with($ruleItem, 'error:')) {
+            if ($ruleItem === 'error') {
                 // Добавляем правило
                 $this->addRule(
                     new FileErrorRule($this, $value['error'])
@@ -210,7 +210,7 @@ abstract class Validator
     }
 
     /**
-     * // Запускает проверку всех правил
+     * Запускает проверку всех правил
      * @return void
      */
     private function runRules()

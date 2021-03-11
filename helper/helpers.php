@@ -1,7 +1,6 @@
 <?php
 
 use App\Model\Subscription;
-use App\Model\User;
 use App\Service\UserService;
 use App\Session;
 use App\View\Theme;
@@ -47,8 +46,7 @@ function array_get(array $array, string $key, $default = null): mixed
  */
 function isAuthorized(): bool
 {
-    $userId = Session::get('userId');
-    return isset($userId);
+    return (bool) getActiveUserId();
 }
 
 /**
@@ -69,14 +67,14 @@ function isAuthPage(): bool
 function getActiveEmail(): ?string
 {
     $userService = new UserService();
-    return $userService->getActiveUserData()->email ?? null;
+    return $userService->getById(getActiveUserId())->email ?? null;
 }
 
 /**
  * Возвращает Email активного пользователя
  * @return string|null
  */
-function getUserId(): ?string
+function getActiveUserId(): ?string
 {
     return Session::get('userId');
 }

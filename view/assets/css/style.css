@@ -3039,13 +3039,13 @@ button.list-group-item:hover {
 }
 
 .logout {
-    display: flex!important;
-    align-items: center!important;
-    max-height: 90px!important;
+    display: flex !important;
+    align-items: center !important;
+    max-height: 90px !important;
 }
 
 .shrink .logout {
-    max-height: 60px!important;
+    max-height: 60px !important;
 }
 
 .error_subscribe {
@@ -3095,7 +3095,7 @@ button.list-group-item:hover {
 
 .my_form .form-control {
     background: #FFFFFF;
-    font-family: 'Baloo Thambi', sans-serif!important;
+    font-family: 'Baloo Thambi', sans-serif !important;
 }
 
 .qwerty {
@@ -3128,7 +3128,7 @@ button.list-group-item:hover {
 }
 
 .img_avatar-input {
-    display: none!important;
+    display: none !important;
 }
 
 .avatar_img-prompt {
@@ -3163,7 +3163,7 @@ button.list-group-item:hover {
 }
 
 .btn-profile {
-    float: left!important;
+    float: left !important;
 }
 
 .error_profileUpdate {
@@ -3175,7 +3175,7 @@ button.list-group-item:hover {
 }
 
 .alert {
-    font-family: 'Baloo Thambi', sans-serif!important;
+    font-family: 'Baloo Thambi', sans-serif !important;
     width: 350px;
     position: fixed;
     right: -350px;
@@ -3190,4 +3190,33 @@ button.list-group-item:hover {
 
 .alert-exit {
     transform: translateX(320px);
+}
+
+.card-body .row {
+    display: flex;
+    align-items: center;
+}
+
+.card-body .row .text-secondary {
+    margin-bottom: 8px;
+}
+
+.my_avatar_lk {
+    border-radius: 10px;
+    max-height: 176px;
+    box-shadow: 0 0 15px black;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.profile {
+    margin-top: 100px;
+    padding: 90px 0;
+    position: relative;
 }

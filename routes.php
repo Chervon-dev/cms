@@ -11,7 +11,8 @@ $router->get('/', MainController::class . '@showPage');
 $router->get('/post/*', PostController::class . '@showPage');
 
 // Роуты для работы в профиле
-$router->get('/profile', ProfileController::class . '@showPage');
+$router->get('/profile', ProfileController::class . '@showPageProfile');
+$router->get('/users/*', ProfileController::class . '@showPageUserInfo');
 // (POST)
 $router->post('/profile/update/data', ProfileController::class . '@updateData');
 $router->post('/profile/update/avatar', ProfileController::class . '@updateAvatar');
