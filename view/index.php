@@ -16,7 +16,7 @@ $theme->header($title);
                 <div class="img-date">
                     <div class="col-md-1 text-center date-category">
                         <i class="fa fa-camera fa-2x"></i>
-                        <p>June 17, 2015</p>
+                        <p><?= date("F j, Y") ?></p>
                     </div>
                     <div class="img-blog">
                         <a href="/post/1">

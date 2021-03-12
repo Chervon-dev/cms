@@ -13,8 +13,8 @@ $theme->header($title);
     <div class="container">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li><a href="#">Home</a> <span class="divider"></span></li>
-                <li class="active">Post</li>
+                <li><a href="/">Home</a> <span class="divider"></span></li>
+                <li class="active">Title goes Here</li>
             </ul>
         </div>
         <div id="blog-container" class="col-md-9">
@@ -84,7 +84,6 @@ $theme->header($title);
                             condimentum nunc ac nisi vulputate fringilla. Donec lacinia
                             congue felis in faucibus.
                         </p>
-                        <a class="btn text-right">Reply</a>
                     </div>
                 </div>
                 <div class="comment media">
@@ -94,7 +93,7 @@ $theme->header($title);
                     <div class="media-body">
                         <a href="#">
                             <h6 class="media-heading">Mariane Lindberg
-                                <small>August 25, 2014 at 9:30 PM</small>
+                                <small><?= date(DATE_FORMAT); ?></small>
                             </h6>
                         </a>
                         <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
@@ -102,25 +101,6 @@ $theme->header($title);
                             condimentum nunc ac nisi vulputate fringilla. Donec lacinia
                             congue felis in faucibus.
                         </p>
-                        <a class="btn text-right">Reply</a>
-                        <div class="comment media nested">
-                            <a href="#">
-                                <img class="media-object img-responsive" src="/view/assets/img/review3.jpg" alt="">
-                            </a>
-                            <div class="media-body">
-                                <a href="#">
-                                    <h6 class="media-heading">Nested Comment
-                                        <small>August 25, 2014 at 9:30 PM</small>
-                                    </h6>
-                                </a>
-                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                                    sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra
-                                    turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
-                                    lacinia congue felis in faucibus.
-                                </p>
-                                <a class="btn text-right">Reply</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
