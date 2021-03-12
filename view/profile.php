@@ -12,9 +12,7 @@ $avatarName = $user->avatar;
 
 
 <section id="blog" class="pages" style="margin-top: 100px; padding: 90px 0; position: relative;">
-    <div class="alert alert-success" id="alert-update" role="alert">
-        You have successfully updated!
-    </div>
+    <div class="alert alert-success" id="alert-update" role="alert"></div>
     <div class="container">
         <div class="profile_form">
             <form class="my_form" enctype="multipart/form-data">

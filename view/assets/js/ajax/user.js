@@ -223,9 +223,7 @@ const user = {
 
         var userId = $('#userId');
         var avatar = $("#img_avatar");
-        var alertSuccess = $("#alert-update");
-
-        var avatarError = $('#img_avatar + .error_profileUpdate');
+        var alert = $("#alert-update");
 
         formData.append('userId', userId.val());
         formData.append('avatar', avatar.prop('files')[0]);
@@ -239,13 +237,62 @@ const user = {
             contentType: false,
             success: function (result) {
 
-                if (result === '"You have successfully updated!"') {
-                    alertSuccess.removeClass('alert-exit');
-                    alertSuccess.addClass('alert-active');
+                if (result.includes('"error_upload"')) {
+
+                    alert.addClass('alert-danger');
+                    alert.removeClass('alert-exit');
+                    alert.text('Error upload!');
+                    alert.addClass('alert-active');
+                    alert.addClass('alert-danger');
 
                     setTimeout(() => {
-                        alertSuccess.removeClass('alert-active');
-                        alertSuccess.addClass('alert-exit');
+                        alert.removeClass('alert-active');
+                        alert.addClass('alert-exit');
+                        $("#updateUser").attr('disabled', false);
+                    }, 5000);
+
+                }
+
+                if (result.includes('"error_type"')) {
+
+                    alert.addClass('alert-danger');
+                    alert.removeClass('alert-exit');
+                    alert.text('Error file type!');
+                    alert.addClass('alert-active');
+                    alert.addClass('alert-danger');
+
+                    setTimeout(() => {
+                        alert.removeClass('alert-active');
+                        alert.addClass('alert-exit');
+                        $("#updateUser").attr('disabled', false);
+                    }, 5000);
+
+                }
+
+                if (result.includes('"error_size"')) {
+
+                    alert.addClass('alert-danger');
+                    alert.removeClass('alert-exit');
+                    alert.text('Error file size!');
+                    alert.addClass('alert-active');
+                    alert.addClass('alert-danger');
+
+                    setTimeout(() => {
+                        alert.removeClass('alert-active');
+                        alert.addClass('alert-exit');
+                        $("#updateUser").attr('disabled', false);
+                    }, 5000);
+
+                }
+
+                if (result === '"You have successfully updated!"') {
+                    alert.removeClass('alert-exit');
+                    alert.text('You have successfully updated!');
+                    alert.addClass('alert-active');
+
+                    setTimeout(() => {
+                        alert.removeClass('alert-active');
+                        alert.addClass('alert-exit');
                         $("#updateUser").attr('disabled', false);
                     }, 5000);
                 }
