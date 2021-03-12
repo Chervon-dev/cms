@@ -17,6 +17,14 @@ $theme->header($title);
                                 </div>
                                 <img src="/view/assets/img/users/<?= $user->avatar ?>" alt="Admin"
                                      class="rounded-circle my_avatar_lk">
+
+                                <?php if ($user->id == getActiveUserId()): ?>
+                                    <br>
+                                    <br>
+                                    <div class="mt-3">
+                                        <p class="mt-0">( Это ваш профиль! )</p>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
