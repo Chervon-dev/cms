@@ -4,14 +4,11 @@
         <h5 class="sidebar-header">Categories</h5>
         <div class="row">
             <ul class="list-unstyled">
-                <li><a href="#">Our Offers</a>
-                </li>
-                <li><a href="#">Events and News</a>
-                </li>
-                <li><a href="#">Cats and Dogs</a>
-                </li>
-                <li><a href="#">Exotic Pets</a>
-                </li>
+                <?php foreach ($categories as $category): ?>
+                    <li>
+                        <a href="?category=<?= $category->id ?>"><?= $category->name ?></a>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </div>

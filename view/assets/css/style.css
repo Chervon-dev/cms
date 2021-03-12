@@ -3220,3 +3220,11 @@ button.list-group-item:hover {
     padding: 90px 0;
     position: relative;
 }
+
+.img-blog {
+    height: 400px;
+}
+
+.jumbotron {
+    background-image: url("/view/assets/img/posts/2.jpg");
+}

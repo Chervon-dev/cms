@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\CategoryService;
 use App\View\View;
 
 /**
@@ -12,11 +13,31 @@ use App\View\View;
 class MainController
 {
     /**
+     * @var CategoryService
+     */
+    private CategoryService $categoryService;
+
+    /**
+     * MainController constructor.
+     */
+    public function __construct()
+    {
+        $this->categoryService = new CategoryService();
+    }
+
+    /**
      * Выводит страницу (Index)
      * @return View
      */
     public function showPage(): View
     {
-        return new View('index', ['title' => DEFAULT_TITLE]);
+        $categories = $this->categoryService->getAll();
+        return new View(
+            'index',
+            [
+                'title' => DEFAULT_TITLE,
+                'categories' => $categories
+            ]
+        );
     }
 }
