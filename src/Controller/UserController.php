@@ -65,15 +65,15 @@ class UserController
     public function show(int $id): View
     {
         /** @var Model $user */
-        $userData = $this->userService->getById($id);
+        $user = $this->userService->getById($id);
 
-        if ($userData) {
+        if ($user) {
             return new View(
                 'user-info',
                 [
-                    'title' => $userData->name,
+                    'title' => $user->name,
                     // Данные о пользователе
-                    'user' => $userData
+                    'user' => $user
                 ]
             );
         }

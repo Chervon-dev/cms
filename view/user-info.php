@@ -48,7 +48,7 @@ $theme->header($title);
                                     <h6 class="mb-0">Role</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    Administrator
+                                    <?= $user->role ?>
                                 </div>
                             </div>
                         </div>

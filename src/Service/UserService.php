@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Model\Role;
 use App\Model\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -32,8 +33,15 @@ class UserService
      */
     public function getById(string|int $id): Model|Builder|null
     {
-        $data = User::query()->find($id);
-        return $data ?? null;
+        $user = User::query()->find($id);
+
+        if ($user) {
+            $role = Role::query()->find($user->role_id);
+            $user->setAttribute('role', $role->title);
+            return $user;
+        }
+
+        return null;
     }
 
     /**
