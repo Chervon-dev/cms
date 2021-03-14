@@ -47,7 +47,7 @@ $theme->header($title);
                     </div>
                     <div class="img-blog">
                         <a href="/post/2">
-                            <img class="img-responsive img-post" src="/view/assets/img/blog2.jpg" alt="">
+                            <img class="img-responsive img-post" src="/view/assets/img/posts/2.jpg" alt="">
                         </a>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ $theme->header($title);
                     </div>
                     <div class="img-blog">
                         <a href="/post/3">
-                            <img class="img-responsive img-post" src="/view/assets/img/blog3.jpg" alt="">
+                            <img class="img-responsive img-post" src="/view/assets/img/posts/3.jpg" alt="">
                         </a>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ $theme->header($title);
             </div>
         </div>
 
-        <?php $theme->block('sidebar', ['categories' => $categories]); ?>
+        <?php $theme->block('sidebar'); ?>
 
         <div class="text-center col-md-12">
             <ul class="pagination">

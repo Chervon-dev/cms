@@ -13,11 +13,11 @@ class PostController
 {
     /**
      * Выводит страницу (Post)
-     * @param $id
+     * @param string $alias
      * @return View
      */
-    public function showPage($id): View
+    public function showPage(string $alias): View
     {
-        return new View('post', ['title' => 'Post', 'id' => $id]);
+        return new View('post', ['title' => 'Post', 'alias' => $alias]);
     }
 }

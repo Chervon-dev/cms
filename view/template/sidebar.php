@@ -1,3 +1,12 @@
+<?php
+
+use App\Service\CategoryService;
+
+$categories = new CategoryService();
+$categories = $categories->getAll();
+
+?>
+
 <div class="sidebar col-md-3">
 
     <div class="well">
