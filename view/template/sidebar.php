@@ -1,27 +1,4 @@
-<?php
-
-use App\Service\CategoryService;
-
-$categories = new CategoryService();
-$categories = $categories->getAll();
-
-?>
-
 <div class="sidebar col-md-3">
-
-    <div class="well">
-        <h5 class="sidebar-header">Categories</h5>
-        <div class="row">
-            <ul class="list-unstyled">
-                <?php foreach ($categories as $category): ?>
-                    <li>
-                        <a href="?category=<?= $category->id ?>"><?= $category->name ?></a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    </div>
-
     <div class="well">
         <h5 class="sidebar-header">Latest Posts</h5>
         <div class="row">
