@@ -10,5 +10,15 @@ use App\Model\Post;
  */
 class PostService
 {
-
+    /**
+     * @return array
+     */
+    public function getLatestPosts(): array
+    {
+        return Post::query()
+            ->orderBy('date', 'ASC')
+            ->limit(3)
+            ->get()
+            ->all();
+    }
 }

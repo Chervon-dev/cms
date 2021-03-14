@@ -49,6 +49,9 @@ $theme->header($title);
                     quis. Sed vulputate pharetra enim ac pretium. Quisque at rutrum nunc, nec dictum ligula. Vestibulum
                     magna nibh, dapibus at eros et, auctor sagittis ipsum.</p>
             </div>
+
+            <?php if (isAuthorized()): ?>
+
             <div class="row">
                 <div class="col-md-7">
                     <div class="media comment-form">
@@ -66,6 +69,9 @@ $theme->header($title);
                     </div>
                 </div>
             </div>
+
+            <?php endif; ?>
+
             <div class="comments-block">
                 <h5>Comments</h5>
                 <hr>

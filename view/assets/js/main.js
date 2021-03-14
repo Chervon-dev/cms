@@ -7,6 +7,7 @@ Version: 1.0
 
 $('.my_avatar').css({'height' : $('.my_data').height() - 32});
 $('.qwerty').css({'width' : $('.qwerty').height()});
+$('.img-circle').css({'height' : $('.img-circle').width()});
 
  "use strict";
 $(document).ready(function() {
