@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Exception\NotFoundException;
+use App\Service\PostService;
 use App\View\View;
 
 /**
@@ -12,12 +14,34 @@ use App\View\View;
 class PostController
 {
     /**
+     * @var PostService
+     */
+    private PostService $postService;
+
+    /**
+     * MainController constructor.
+     */
+    public function __construct()
+    {
+        $this->postService = new PostService();
+    }
+
+    /**
      * Выводит страницу (Post)
      * @param string $alias
      * @return View
+     * @throws NotFoundException
      */
     public function showPage(string $alias): View
     {
-        return new View('post', ['title' => 'Post', 'alias' => $alias]);
+        $post = $this->postService->getByAlias($alias);
+
+        return new View(
+            'post',
+            [
+                'title' => 'Post',
+                'post' => $post
+            ]
+        );
     }
 }

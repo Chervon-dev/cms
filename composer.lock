@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6012071fd420a9fef9b6cf8308add363",
+    "content-hash": "62326a891e681f2448fe03a2f1d967f1",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -103,16 +103,16 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v8.31.0",
+            "version": "v8.32.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "ecc881c6dce66e22f2c236374f342d41c7ebeb67"
+                "reference": "d7cc717a00064b40fa63a8ad522042005e1de1ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/ecc881c6dce66e22f2c236374f342d41c7ebeb67",
-                "reference": "ecc881c6dce66e22f2c236374f342d41c7ebeb67",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/d7cc717a00064b40fa63a8ad522042005e1de1ed",
+                "reference": "d7cc717a00064b40fa63a8ad522042005e1de1ed",
                 "shasum": ""
             },
             "require": {
@@ -153,11 +153,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-03-02T13:34:56+00:00"
+            "time": "2021-03-08T17:22:22+00:00"
         },
         {
             "name": "illuminate/container",
-            "version": "v8.31.0",
+            "version": "v8.32.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -208,7 +208,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v8.31.0",
+            "version": "v8.32.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -256,16 +256,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v8.31.0",
+            "version": "v8.32.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "87dd6cee1eb159dfcba95bd1d2ed59d3f3244b36"
+                "reference": "f6a10cebd9bbd188ca66993168fb453439dbb50f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/87dd6cee1eb159dfcba95bd1d2ed59d3f3244b36",
-                "reference": "87dd6cee1eb159dfcba95bd1d2ed59d3f3244b36",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/f6a10cebd9bbd188ca66993168fb453439dbb50f",
+                "reference": "f6a10cebd9bbd188ca66993168fb453439dbb50f",
                 "shasum": ""
             },
             "require": {
@@ -320,11 +320,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-03-04T13:08:15+00:00"
+            "time": "2021-03-09T14:06:15+00:00"
         },
         {
             "name": "illuminate/macroable",
-            "version": "v8.31.0",
+            "version": "v8.32.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -369,17 +369,67 @@
             "time": "2020-10-27T15:20:30+00:00"
         },
         {
-            "name": "illuminate/support",
-            "version": "v8.31.0",
+            "name": "illuminate/pagination",
+            "version": "v8.32.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/illuminate/support.git",
-                "reference": "978e64ffb68189b70fea77e4d401f43e88fa54ca"
+                "url": "https://github.com/illuminate/pagination.git",
+                "reference": "473ab976c69138a10c4eea73a2cf0f969137973c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/978e64ffb68189b70fea77e4d401f43e88fa54ca",
-                "reference": "978e64ffb68189b70fea77e4d401f43e88fa54ca",
+                "url": "https://api.github.com/repos/illuminate/pagination/zipball/473ab976c69138a10c4eea73a2cf0f969137973c",
+                "reference": "473ab976c69138a10c4eea73a2cf0f969137973c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/collections": "^8.0",
+                "illuminate/contracts": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Pagination\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Pagination package.",
+            "homepage": "https://laravel.com",
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2021-02-17T13:51:11+00:00"
+        },
+        {
+            "name": "illuminate/support",
+            "version": "v8.32.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/support.git",
+                "reference": "2ef7ff288366a1ebe32f633196a1b90bd443acc3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/2ef7ff288366a1ebe32f633196a1b90bd443acc3",
+                "reference": "2ef7ff288366a1ebe32f633196a1b90bd443acc3",
                 "shasum": ""
             },
             "require": {
@@ -434,7 +484,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-03-04T14:09:31+00:00"
+            "time": "2021-03-05T15:22:14+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -630,16 +680,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v5.2.4",
+            "version": "v5.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "d6d0cc30d8c0fda4e7b213c20509b0159a8f4556"
+                "reference": "938ebbadae1b0a9c9d1ec313f87f9708609f1b79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/d6d0cc30d8c0fda4e7b213c20509b0159a8f4556",
-                "reference": "d6d0cc30d8c0fda4e7b213c20509b0159a8f4556",
+                "url": "https://api.github.com/repos/symfony/console/zipball/938ebbadae1b0a9c9d1ec313f87f9708609f1b79",
+                "reference": "938ebbadae1b0a9c9d1ec313f87f9708609f1b79",
                 "shasum": ""
             },
             "require": {
@@ -707,7 +757,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v5.2.4"
+                "source": "https://github.com/symfony/console/tree/v5.2.5"
             },
             "funding": [
                 {
@@ -723,7 +773,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-23T10:08:49+00:00"
+            "time": "2021-03-06T13:42:15+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -1375,16 +1425,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v5.2.4",
+            "version": "v5.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "74b0353ab34ff4cca827a2cf909e325d96815e60"
+                "reference": "0947ab1e3aabd22a6bef393874b2555d2bb976da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/74b0353ab34ff4cca827a2cf909e325d96815e60",
-                "reference": "74b0353ab34ff4cca827a2cf909e325d96815e60",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/0947ab1e3aabd22a6bef393874b2555d2bb976da",
+                "reference": "0947ab1e3aabd22a6bef393874b2555d2bb976da",
                 "shasum": ""
             },
             "require": {
@@ -1448,7 +1498,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v5.2.4"
+                "source": "https://github.com/symfony/translation/tree/v5.2.5"
             },
             "funding": [
                 {
@@ -1464,7 +1514,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-04T15:41:09+00:00"
+            "time": "2021-03-06T07:59:01+00:00"
         },
         {
             "name": "symfony/translation-contracts",

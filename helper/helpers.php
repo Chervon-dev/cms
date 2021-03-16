@@ -121,6 +121,7 @@ function getStringAfterCharacter(string $string, string $character): bool|string
 }
 
 /**
+ * Возвращает отранслитированную строку
  * @param $string
  * @return string|null
  */
@@ -152,4 +153,25 @@ function toTranslit($string): string|null
     $url = preg_replace("/[s]+/ui", "-", $url);
 
     return $url;
+}
+
+/**
+ * Форматирует дату для вывода
+ * @param $date
+ * @param string $format
+ * @return bool|string
+ */
+function formatDate($date, string $format): bool|string
+{
+    return date_format(date_create($date), $format);
+}
+
+/**
+ * Возвращает, активна ли страница (для пагинации)
+ * @param $page
+ * @return string
+ */
+function getActiveClassForValidationByPage($page): string
+{
+    return isset($_GET['page']) && $page == $_GET['page'] ? 'active' : '';
 }

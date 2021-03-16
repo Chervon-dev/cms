@@ -19,7 +19,7 @@ $postService = new PostService();
                 </div>
                 <div class="col-xs-7">
                     <h6><a href="/posts/<?= $post->alias ?>"><?= $post->title ?></a></h6>
-                    <p><?= strstr($post->date, 'AT', true) ?></p>
+                    <p><?= formatDate($post->date, 'F j, Y') ?></p>
                 </div>
             </div>
 
