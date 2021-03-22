@@ -205,6 +205,7 @@ const user = {
                 if (result === '"You have successfully updated!"') {
                     $("#updateUser").attr('disabled', true);
                     password.val('');
+                    alertSuccess.text('You have successfully updated!');
                     alertSuccess.removeClass('alert-exit');
                     alertSuccess.addClass('alert-active');
 
@@ -287,6 +288,7 @@ const user = {
 
                 if (result === '"You have successfully updated!"') {
                     alert.removeClass('alert-exit');
+                    console.log(result);
                     alert.text('You have successfully updated!');
                     alert.addClass('alert-active');
 

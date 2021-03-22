@@ -9,7 +9,8 @@
     ],
     "require": {
         "illuminate/database": "^8.29",
-        "ext-fileinfo": "*"
+        "ext-fileinfo": "*",
+        "illuminate/pagination": "^8.32"
     },
     "autoload": {
         "psr-4": {

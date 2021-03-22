@@ -46,7 +46,7 @@ function array_get(array $array, string $key, $default = null): mixed
  */
 function isAuthorized(): bool
 {
-    return (bool) getActiveUserId();
+    return (bool)getActiveUserId();
 }
 
 /**
@@ -66,8 +66,12 @@ function isAuthPage(): bool
  */
 function getActiveEmail(): ?string
 {
+    if (!getActiveUserId()) {
+        return null;
+    }
+
     $userService = new UserService();
-    return $userService->getById(getActiveUserId())->email ?? null;
+    return $userService->getById(getActiveUserId())->email;
 }
 
 /**
@@ -118,4 +122,60 @@ function checkSubscribeByEmail(string $email): bool
 function getStringAfterCharacter(string $string, string $character): bool|string
 {
     return substr(strrchr($string, $character), 1);
+}
+
+/**
+ * Возвращает отранслитированную строку
+ * @param $string
+ * @return string|null
+ */
+function toTranslit($string): string|null
+{
+    $trans = [
+        'А' => 'A', 'Б' => 'B', 'В' => 'V', 'Г' => 'G', 'Д' => 'D',
+        'Е' => 'E', 'Ё' => 'Jo', 'Ж' => 'Zh', 'З' => 'Z', 'И' => 'I',
+        'Й' => 'J', 'К' => 'K', 'Л' => 'L', 'М' => 'M', 'Н' => 'N',
+        'О' => 'O', 'П' => 'P', 'Р' => 'R', 'С' => 'S', 'Т' => 'T',
+        'У' => 'U', 'Ф' => 'F', 'Х' => 'H', 'Ц' => 'C', 'Ч' => 'Ch',
+        'Ш' => 'Sh', 'Щ' => 'Shh', 'Ъ' => '', 'Ы' => 'Y', 'Ь' => '',
+        'Э' => 'Je', 'Ю' => 'Ju', 'Я' => 'Ja',
+
+        'а' => 'a', 'б' => 'b', 'в' => 'v', 'г' => 'g', 'д' => 'd',
+        'е' => 'e', 'ё' => 'jo', 'ж' => 'zh', 'з' => 'z', 'и' => 'i',
+        'й' => 'j', 'к' => 'k', 'л' => 'l', 'м' => 'm', 'н' => 'n',
+        'о' => 'o', 'п' => 'p', 'р' => 'r', 'с' => 's', 'т' => 't',
+        'у' => 'u', 'ф' => 'f', 'х' => 'h', 'ц' => 'c', 'ч' => 'ch',
+        'ш' => 'sh', 'щ' => 'shh', 'ъ' => '', 'ы' => 'y', 'ь' => '',
+        'э' => 'je', 'ю' => 'ju', 'я' => 'ja'
+    ];
+
+    $url = strtr($string, $trans);
+    $url = mb_strtolower($url);
+
+    $url = preg_replace("/[^a-z0-9-s,]/i", "", $url);
+    $url = preg_replace("/[,-]/ui", " ", $url);
+    $url = preg_replace("/[s]+/ui", "-", $url);
+
+    return $url;
+}
+
+/**
+ * Форматирует дату для вывода
+ * @param $date
+ * @param string $format
+ * @return bool|string
+ */
+function formatDate($date, string $format): bool|string
+{
+    return date_format(date_create($date), $format);
+}
+
+/**
+ * Возвращает, активна ли страница (для пагинации)
+ * @param $page
+ * @return string
+ */
+function getActiveClassForValidationByPage($page): string
+{
+    return isset($_GET['page']) && $page == $_GET['page'] ? 'active' : '';
 }

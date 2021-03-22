@@ -8,7 +8,7 @@ use App\Controller\SubscriptionController;
 
 // Роуты основных страниц (GET)
 $router->get('/', MainController::class . '@showPage');
-$router->get('/post/*', PostController::class . '@showPage');
+$router->get('/posts/*', PostController::class . '@showPage');
 
 // Роуты для работы в профиле
 $router->get('/profile', UserController::class . '@me');

@@ -3,7 +3,12 @@
 namespace App\Service;
 
 use App\Model\Role;
+use App\Exception\NotFoundException;
+use App\JsonResponse;
 use App\Model\User;
+use App\Validator\AvatarValidator;
+use App\Validator\ProfileValidator;
+use App\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +19,130 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserService
 {
+    /**
+     * Обновляет данные о пользователе
+     * @return JsonResponse
+     */
+    public function update(): JsonResponse
+    {
+        $data = [
+            'id' => (int)$_POST['userId'],
+            'name' => strip_tags($_POST['name']),
+            'email' => strip_tags($_POST['email']),
+            'password' => strip_tags($_POST['password']),
+            'about' => strip_tags($_POST['about']),
+        ];
+
+        // Валидатор
+        $validator = new ProfileValidator($data);
+
+        // Валидация
+        if (!$validator->rules()) {
+            return $validator->getErrors();
+        }
+
+        // Обновление данных в БД
+        $this->updateData(
+            $data['id'],
+            $data['name'],
+            $data['email'],
+            $data['password'],
+            $data['about']
+        );
+
+        return $validator->getSuccess();
+    }
+
+    /**
+     * Обновляет аватар пользователя
+     * @return JsonResponse
+     */
+    public function updateAvatar(): JsonResponse
+    {
+        $userId = $_POST['userId'];
+        $tmp_name = $_FILES['avatar']['tmp_name'];
+
+        // Валидатор
+        $validator = new AvatarValidator($_FILES);
+
+        // Валидация
+        if (!$validator->rules()) {
+            return $validator->getErrors();
+        }
+
+        // Загружает аватар на сервер и возвращает имя загруженного файла
+        $avatarName = $this->uploadAvatar($userId, $tmp_name);
+
+        // Загрузка аватара на сервер
+        $this->insertAvatar((int) $userId, $avatarName);
+
+        return $validator->getSuccess();
+    }
+
+    /**
+     * Загружаешь аватар на сервер
+     * @param string $userId
+     * @param string $tmpName
+     * @return string
+     */
+    public function uploadAvatar(string $userId, string $tmpName): string
+    {
+        $name = $userId . '.jpg';
+        move_uploaded_file($tmpName, AVATAR_DIR . $name);
+        return $name;
+    }
+
+    /**
+     * Выводит страницу (user-info)
+     * @param int $id
+     * @return View
+     * @throws NotFoundException
+     */
+    public function show(int $id): View
+    {
+        /** @var Model $user */
+        $userData = $this->getById($id);
+
+        if ($userData) {
+            return new View(
+                'user-info',
+                [
+                    'title' => $userData->name,
+                    // Данные о пользователе
+                    'user' => $userData
+                ]
+            );
+        }
+
+        throw new NotFoundException();
+    }
+
+    /**
+     * Выводит страницу (Profile)
+     * @return View
+     * @throws NotFoundException
+     */
+    public function me(): View
+    {
+        /** @var Model $user */
+        $user = $this->getById(
+            getActiveUserId()
+        );
+
+        if ($user) {
+            return new View(
+                'profile',
+                [
+                    'title' => 'Personal Area',
+                    // Данные об активном пользователе
+                    'user' => $user
+                ]
+            );
+        }
+
+        throw new NotFoundException();
+    }
+
     /**
      * Если есть пользователь (по Email)
      * @param string $email
@@ -98,7 +227,7 @@ class UserService
      * @param string $avatar
      * @return void
      */
-    public function updateAvatar(int $id, string $avatar): void
+    public function insertAvatar(int $id, string $avatar): void
     {
         User::query()->find($id)->update([
             'avatar' => $avatar
