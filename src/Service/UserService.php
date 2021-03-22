@@ -6,8 +6,11 @@ use App\Model\Role;
 use App\Exception\NotFoundException;
 use App\JsonResponse;
 use App\Model\User;
+use App\Session;
 use App\Validator\AvatarValidator;
+use App\Validator\LoginValidator;
 use App\Validator\ProfileValidator;
+use App\Validator\SignupValidator;
 use App\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -19,6 +22,91 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserService
 {
+    /**
+     * Выполняет валидацию данных и регестрирует пользователя
+     * @return JsonResponse
+     */
+    public function registration(): JsonResponse
+    {
+        $data = [
+            'name' => strip_tags($_POST['name']),
+            'email' => strip_tags($_POST['email']),
+            'password' => strip_tags($_POST['password']),
+            'confirm_password' => strip_tags($_POST['confirm_password']),
+            'checkbox' => $_POST['agree_with_the_site_rules'],
+        ];
+
+        // Валидатор
+        $validator = new SignupValidator($data);
+
+        // Валидация
+        if (!$validator->rules()) {
+            // Получение ошибок
+            return $validator->getErrors();
+        }
+
+        // Добавление пользователя
+        $user = $this->add(
+            $data['name'],
+            $data['email'],
+            $data['password']
+        );
+
+        // Обновляется сессия
+        Session::set('userId', $user->id);
+
+        // Получение данных об успехе
+        return $validator->getSuccess();
+    }
+
+    /**
+     * Выполняет валидацию данных и авторизует пользователя
+     * @return JsonResponse
+     */
+    public function login(): JsonResponse
+    {
+        $data = [
+            'email' => strip_tags($_POST['email']),
+            'password' => strip_tags($_POST['password']),
+        ];
+
+        // Валидатор
+        $validator = new LoginValidator($data);
+
+        /** @var User $user */
+        $user = $this->getByEmail($data['email']);
+
+        // Валидация
+        if (!isset($user->id)) {
+            $validator->setError('not-isset_email');
+
+        } elseif (!password_verify($data['password'], $user->password)) {
+            $validator->setError('wrong_password');
+        }
+
+        // Валидация
+        if (!$validator->rules()) {
+            // Получение ошибок
+            return $validator->getErrors();
+        }
+
+        // Обновляется сессия
+        Session::set('userId', $user->id);
+
+        // Получение данных об успехе
+        return $validator->getSuccess();
+    }
+
+    /**
+     * Очищает сессии и деавторизирует пользователя
+     * @return void
+     */
+    public function logout(): void
+    {
+        Session::destroy();
+        header('location: /');
+    }
+
     /**
      * Обновляет данные о пользователе
      * @return JsonResponse
@@ -74,7 +162,7 @@ class UserService
         $avatarName = $this->uploadAvatar($userId, $tmp_name);
 
         // Загрузка аватара на сервер
-        $this->insertAvatar((int) $userId, $avatarName);
+        $this->insertAvatar((int)$userId, $avatarName);
 
         return $validator->getSuccess();
     }

@@ -32,22 +32,7 @@ class SubscriptionController
      */
     public function sign(): JsonResponse
     {
-        $data = ['email' => strip_tags($_POST['email'])];
-
-        // Валидатор
-        $validator = new SubscriptionValidator($data);
-
-        // Валидация
-        if (!$validator->rules()) {
-            // Получение ошибок
-            return $validator->getErrors();
-        }
-
-        // Добавление подписки
-        $this->subscriptionService->add($data['email']);
-
-        // Получение данных об успехе
-        return $validator->getSuccess();
+        return $this->subscriptionService->sign();
     }
 
     /**
@@ -56,8 +41,6 @@ class SubscriptionController
      */
     public function unsubscribe(): void
     {
-        $this->subscriptionService->delete(
-            getActiveEmail()
-        );
+        $this->subscriptionService->unsubscribe();
     }
 }

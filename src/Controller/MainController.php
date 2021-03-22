@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\MainPageService;
 use App\Service\PostService;
 use App\View\View;
 
@@ -18,11 +19,17 @@ class MainController
     private PostService $postService;
 
     /**
+     * @var MainPageService
+     */
+    private MainPageService $mainPageService;
+
+    /**
      * MainController constructor.
      */
     public function __construct()
     {
         $this->postService = new PostService();
+        $this->mainPageService = new MainPageService();
     }
 
     /**
@@ -31,15 +38,6 @@ class MainController
      */
     public function showPage(): View
     {
-        $paginator = $this->postService->getListByPagination();
-
-        return new View(
-            'index',
-            [
-                'title' => DEFAULT_TITLE,
-                'paginator' => $paginator,
-                'posts' => $paginator->items(),
-            ]
-        );
+        return $this->mainPageService->showPage($this->postService);
     }
 }

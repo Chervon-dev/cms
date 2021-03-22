@@ -34,14 +34,6 @@ class PostController
      */
     public function showPage(string $alias): View
     {
-        $post = $this->postService->getByAlias($alias);
-
-        return new View(
-            'post',
-            [
-                'title' => 'Post',
-                'post' => $post
-            ]
-        );
+        return $this->postService->showPage($alias);
     }
 }
