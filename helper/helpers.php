@@ -66,8 +66,12 @@ function isAuthPage(): bool
  */
 function getActiveEmail(): ?string
 {
+    if (!getActiveUserId()) {
+        return null;
+    }
+
     $userService = new UserService();
-    return $userService->getById(getActiveUserId())->email ?? null;
+    return $userService->getById(getActiveUserId())->email;
 }
 
 /**

@@ -6,10 +6,10 @@ use App\Exception\NotFoundException;
 use App\Model\Post;
 use \Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * Сервис для работы с моделью Post
  * Class PostService
  * @package App\Service
  */
@@ -39,13 +39,15 @@ class PostService
             'author_id', 'img', 'date'
         ];
 
+        $isPublish = function ($query) {
+            $query->where('is_publish', 1);
+        };
+
         return Post::query()
             ->select($columns)
             ->orderBy('date', 'ASC')
-            ->with(['comments', 'user'])
-            ->paginate(
-                PER_PAGE_POSTS, ['*'], 'page', $_GET['page'] ?? 1
-            );
+            ->with(['comments' => $isPublish, 'user'])
+            ->paginate(PER_PAGE_POSTS, ['*'], 'page', $_GET['page'] ?? 1);
     }
 
     /**
