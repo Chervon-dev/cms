@@ -26,6 +26,9 @@ class Config
     {
         // Устанавливаем конфиг для подключения к БД
         $this->setConfig('db', require APP_DIR . '/configs/db.php');
+
+        // Устанавливаем конфиг для пагинации
+        $this->setConfig('pagination', require APP_DIR . '/configs/pagination.php');
     }
 
     /**

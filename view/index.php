@@ -15,11 +15,12 @@ $theme->header($title);
     <div class="container">
         <?php
 
-        $theme->block('list-posts', ['posts' => $posts]);
+        $theme->block('list-posts', [
+            'posts' => $posts,
+            'paginator' => $paginator
+        ]);
 
         $theme->block('sidebar');
-
-        $theme->block('validation', ['paginator' => $paginator]);
 
         ?>
     </div>

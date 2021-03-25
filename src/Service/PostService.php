@@ -50,17 +50,11 @@ class PostService
     }
 
     /**
-     * Возвращает нужное кол-во постов для выводаы
+     * Возвращает нужное кол-во постов для вывода
      * @return LengthAwarePaginator
      */
     public function getListByPagination(): LengthAwarePaginator
     {
-        Config::getInstance()
-            ->setConfig(
-                'pagination',
-                require APP_DIR . '/configs/pagination.php'
-            );
-
         $columns = [
             'id', 'title', 'alias', 'description',
             'author_id', 'img', 'date'
@@ -70,12 +64,15 @@ class PostService
             $query->where('is_publish', 1);
         };
 
+        $paginationConfig = Config::getInstance()
+            ->getConfig('pagination.site.posts_per_page');
+
         return Post::query()
             ->select($columns)
             ->orderBy('date', 'ASC')
             ->with(['comments' => $isPublish, 'user'])
             ->paginate(
-                Config::getInstance()->getConfig('pagination.perPage'),
+                $paginationConfig,
                 ['*'],
                 'page',
                 $_GET['page'] ?? 1

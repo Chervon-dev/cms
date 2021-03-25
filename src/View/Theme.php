@@ -19,7 +19,7 @@ class Theme
     public function header(string $title = DEFAULT_TITLE, bool $isAdmin = false, array $data = []): void
     {
         $data['title'] = $title;
-        $headerPath = $isAdmin ? 'layout/admin_header.php' : 'layout/header.php';
+        $headerPath = $isAdmin ? 'layout/admin/header.php' : 'layout/header.php';
         includeView($headerPath, $data);
     }
 
@@ -31,30 +31,8 @@ class Theme
      */
     public function footer(bool $isAdmin = false, array $data = []): void
     {
-        $footerPath = $isAdmin ? 'layout/admin_footer.php' : 'layout/footer.php';
+        $footerPath = $isAdmin ? 'layout/admin/footer.php' : 'layout/footer.php';
         includeView($footerPath, $data);
-    }
-
-    /**
-     * Подключает базовый header c параметрами
-     * @param string $title
-     * @param array $data
-     * @return void
-     */
-    public function baseHeader(string $title = DEFAULT_TITLE, array $data = []): void
-    {
-        $data['title'] = $title;
-        includeView('layout/base/header.php', $data);
-    }
-
-    /**
-     * Подключает базовый footer c параметрами
-     * @param array $data
-     * @return void
-     */
-    public function baseFooter(array $data = []): void
-    {
-        includeView('layout/base/footer.php', $data);
     }
 
     /**

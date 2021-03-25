@@ -1,5 +1,0 @@
-</div>
-
-<?php
-
-$theme->baseFooter();

@@ -54,4 +54,11 @@
         </div>
 
     <?php endforeach; ?>
+
+    <?php
+
+    $theme->block('pagination', ['paginator' => $paginator]);
+
+    ?>
+
 </div>

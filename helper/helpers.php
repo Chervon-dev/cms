@@ -4,6 +4,7 @@ use App\Model\Subscription;
 use App\Service\UserService;
 use App\Session;
 use App\View\Theme;
+use Admin\View\Theme as AdminTheme;
 
 /**
  * Подключает шаблон (View)
@@ -15,6 +16,18 @@ function includeView($viewPath, $data = []): void
     extract($data);
     $theme = new Theme();
     include APP_DIR . VIEW_DIR . $viewPath;
+}
+
+/**
+ * Подключает шаблон (View)
+ * @param $viewPath
+ * @param array $data
+ */
+function includeAdminView($viewPath, $data = []): void
+{
+    extract($data);
+    $theme = new AdminTheme();
+    include APP_DIR . ADMIN_VIEW_DIR . $viewPath;
 }
 
 /**
