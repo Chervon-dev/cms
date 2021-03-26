@@ -65,7 +65,7 @@ class PostService
         };
 
         $paginationConfig = Config::getInstance()
-            ->getConfig('pagination.site.posts_per_page');
+            ->getConfig('pagination.site.posts_per_page_default');
 
         return Post::query()
             ->select($columns)

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Config;
 use App\View\View;
 
 /**
@@ -15,6 +16,11 @@ class PostsController
      */
     public function showPage(): View
     {
-        return new View('admin.posts');
+        $paginationParams = Config::getInstance()
+            ->getConfig('pagination.admin_panel.posts');
+
+        return new View('admin.posts', [
+            'paginationParams' => $paginationParams
+        ]);
     }
 }

@@ -2,10 +2,16 @@
 
 return [
     'admin_panel' => [
-        'users_per_page' => 7,
-        'posts_per_page' => 5,
+        'users' => [
+            'per_page_values' => [10, 20, 50, 200],
+            'per_page_default' => 20,
+        ],
+        'posts' => [
+            'per_page_values' => [10, 20, 50, 200],
+            'per_page_default' => 20,
+        ],
     ],
     'site' => [
-        'posts_per_page' => 1,
+        'posts_per_page_default' => 2,
     ],
 ];

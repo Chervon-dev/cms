@@ -190,5 +190,13 @@ function formatDate($date, string $format): bool|string
  */
 function getActiveClassForValidationByPage($page): string
 {
-    return isset($_GET['page']) && $page == $_GET['page'] ? 'active' : '';
+    if ($page === 1 && !isset($_GET['page'])) {
+        return 'active';
+    }
+
+    if (isset($_GET['page']) && $page == $_GET['page']) {
+        return 'active';
+    }
+
+    return '';
 }

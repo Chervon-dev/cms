@@ -98,12 +98,6 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/subscriptions" aria-expanded="false">
-                            <i class="mdi me-2 mdi-emoticon"></i>
-                            <span class="hide-menu">Subscriptions</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/admin/pages" aria-expanded="false">
                             <i class="mdi me-2 mdi-book-open-variant"></i>
                             <span class="hide-menu">Static pages</span>

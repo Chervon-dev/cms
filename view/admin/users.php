@@ -9,21 +9,14 @@ $theme->header('Users', true);
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <div style="float: right">
-                            <div class="row g-3 align-items-center" style="font-size: 16px">
-                                <div class="col-auto">
-                                    <label for="inputPassword6" class="col-form-label">Per page config:</label>
-                                </div>
-                                <div class="col-auto" style="font-weight: 100">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option value="1">5</option>
-                                        <option value="2">7</option>
-                                        <option value="3">10</option>
-                                        <option value="3">15</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+
+                        $theme->block(
+                            'admin/select-perpage',
+                            ['params' => $paginationParams]
+                        );
+
+                        ?>
                         <h4 class="card-title">Users</h4>
                         <div class="table-responsive">
                             <table class="table user-table">
