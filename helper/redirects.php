@@ -11,3 +11,8 @@ if (isAuthorized() && isAuthPage()) {
 if (!isAuthorized() && isActivePage('/profile')) {
     header('location: /auth/login');
 }
+
+// Если пользователь пытается войти в админку неавторизованным
+if (str_starts_with(URI, '/admin') && !getActiveUserId()) {
+    header('location: /auth/login');
+}

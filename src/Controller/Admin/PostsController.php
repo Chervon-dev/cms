@@ -9,7 +9,7 @@ use App\View\View;
  * Class PostsController
  * @package App\Controller\Admin
  */
-class PostsController
+class PostsController extends BaseController
 {
     /**
      * @return View

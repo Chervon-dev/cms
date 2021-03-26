@@ -36,6 +36,32 @@ class Theme
     }
 
     /**
+     * Подключает кастомный header c параметрами
+     * @param string $path
+     * @param string $title
+     * @param array $data
+     * @return void
+     */
+    public function customHeader(string $path, string $title = DEFAULT_TITLE, array $data = []): void
+    {
+        $data['title'] = $title;
+        $path = 'layout/' . $path . '/header.php';
+        includeView($path, $data);
+    }
+
+    /**
+     * Подключает кастомный footer c параметрами
+     * @param string $path
+     * @param array $data
+     * @return void
+     */
+    public function customFooter(string $path, array $data = []): void
+    {
+        $path = 'layout/' . $path . '/footer.php';
+        includeView($path, $data);
+    }
+
+    /**
      * Подключает блок c параметрами
      * @param string $path
      * @param array $data

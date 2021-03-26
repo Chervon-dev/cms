@@ -2,6 +2,7 @@
 
 // Константы проекта
 define('APP_DIR', $_SERVER['DOCUMENT_ROOT']);
+define('URI', $_SERVER['REQUEST_URI']);
 define('VIEW_DIR', '/view/');
 define('ADMIN_VIEW_DIR', '/admin/view/');
 define('AVATAR_DIR', 'view/assets/img/users/');

@@ -8,7 +8,7 @@ use App\View\View;
  * Class DashboardController
  * @package App\Controller\Admin
  */
-class DashboardController
+class DashboardController extends BaseController
 {
     /**
      * @return View

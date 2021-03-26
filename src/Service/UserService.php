@@ -189,7 +189,7 @@ class UserService
     public function show(int $id): View
     {
         /** @var Model $user */
-        $userData = $this->getById($id);
+        $userData = $this->getAllById($id);
 
         if ($userData) {
             return new View(
@@ -213,7 +213,7 @@ class UserService
     public function me(): View
     {
         /** @var Model $user */
-        $user = $this->getById(
+        $user = $this->getAllById(
             getActiveUserId()
         );
 
@@ -248,7 +248,7 @@ class UserService
      * @param string|int $id
      * @return Builder|Model|null
      */
-    public function getById(string|int $id): Model|Builder|null
+    public function getAllById(string|int $id): Model|Builder|null
     {
         $user = User::query()->find($id);
 

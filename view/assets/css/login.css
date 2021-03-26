@@ -121,7 +121,7 @@ body {
 
 .my-auth-background {
     background-color: #363636;
-    background-image: url(http://cms/view/assets/css/../img/illustrations/pattern.png);
+    background-image: url(../img/illustrations/pattern.png);
 }
 
 /* Buttons */

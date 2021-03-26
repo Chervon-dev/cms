@@ -1,6 +1,6 @@
 <?php
 
-$theme->baseHeader($title);
+$theme->customHeader('auth', $title);
 
 ?>
 
@@ -52,4 +52,4 @@ $theme->baseHeader($title);
     </div>
 </main>
 
-<?php $theme->baseFooter(); ?>
+<?php $theme->customFooter('auth'); ?>
