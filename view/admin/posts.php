@@ -1,6 +1,6 @@
 <?php
 
-$theme->header('Users', true);
+$theme->header('Posts', true);
 
 ?>
 
@@ -24,24 +24,24 @@ $theme->header('Users', true);
                                 </div>
                             </div>
                         </div>
-                        <h4 class="card-title">Users</h4>
+                        <h4 class="card-title">Posts</h4>
                         <div class="table-responsive">
                             <table class="table user-table">
                                 <thead>
                                 <tr>
                                     <th class="border-top-0">#</th>
-                                    <th class="border-top-0">Name</th>
-                                    <th class="border-top-0">Email</th>
-                                    <th class="border-top-0">Role</th>
+                                    <th class="border-top-0">Title</th>
+                                    <th class="border-top-0">Author</th>
+                                    <th class="border-top-0">Date</th>
                                     <th class="border-top-0" style="width: 230px"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>Deshmukh</td>
-                                    <td>Prohaska</td>
-                                    <td>@Genelia</td>
+                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">User</a></td>
+                                    <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
                                         <button class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
@@ -55,9 +55,9 @@ $theme->header('Users', true);
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>Deshmukh</td>
-                                    <td>Gaylord</td>
-                                    <td>@Ritesh</td>
+                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">User</a></td>
+                                    <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
                                         <button class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
@@ -71,9 +71,9 @@ $theme->header('Users', true);
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>Sanghani</td>
-                                    <td>Gusikowski</td>
-                                    <td>@Govinda</td>
+                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">User</a></td>
+                                    <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
                                         <button class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
@@ -87,9 +87,9 @@ $theme->header('Users', true);
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td>Roshan</td>
-                                    <td>Rogahn</td>
-                                    <td>@Hritik</td>
+                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">User</a></td>
+                                    <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
                                         <button class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
@@ -103,9 +103,9 @@ $theme->header('Users', true);
                                 </tr>
                                 <tr>
                                     <td>5</td>
-                                    <td>Joshi</td>
-                                    <td>Hickle</td>
-                                    <td>@Maruti</td>
+                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">User</a></td>
+                                    <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
                                         <button class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
@@ -119,9 +119,9 @@ $theme->header('Users', true);
                                 </tr>
                                 <tr>
                                     <td>6</td>
-                                    <td>Nigam</td>
-                                    <td>Eichmann</td>
-                                    <td>@Sonu</td>
+                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">User</a></td>
+                                    <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
                                         <button class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
@@ -135,9 +135,9 @@ $theme->header('Users', true);
                                 </tr>
                                 <tr>
                                     <td>7</td>
-                                    <td>Nigam</td>
-                                    <td>Eichmann</td>
-                                    <td>@Sonu</td>
+                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">User</a></td>
+                                    <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
                                         <button class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
