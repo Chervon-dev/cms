@@ -75,6 +75,31 @@ function getActiveEmail(): ?string
 }
 
 /**
+ * Возвращает данные активного пользователя
+ * @return array
+ */
+function getActiveUserDataForAdmin(): array
+{
+    $userService = new UserService();
+    $user = $userService->getAllById(getActiveUserId());
+
+    return [
+        'name' => $user->name,
+        'avatar' => $user->avatar ?? 'default.jpg',
+    ];
+}
+
+/**
+ * Возвращает Role_id активного пользователя
+ * @return int
+ */
+function getActiveRoleId(): int
+{
+    $userService = new UserService();
+    return $userService->getAllById(getActiveUserId())->role_id;
+}
+
+/**
  * Возвращает Email активного пользователя
  * @return string|null
  */

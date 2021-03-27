@@ -19,7 +19,15 @@ class Theme
     public function header(string $title = DEFAULT_TITLE, bool $isAdmin = false, array $data = []): void
     {
         $data['title'] = $title;
-        $headerPath = $isAdmin ? 'layout/admin/header.php' : 'layout/header.php';
+        $headerPath = 'layout/header.php';
+
+        if ($isAdmin) {
+            $user = getActiveUserDataForAdmin();
+            $data['name'] = $user['name'];
+            $data['avatar'] = $user['avatar'];
+            $headerPath = 'layout/admin/header.php';
+        }
+
         includeView($headerPath, $data);
     }
 
