@@ -8,6 +8,8 @@ use App\Controller\SubscriptionController;
 use App\Controller\Admin\DashboardController;
 use App\Controller\Admin\UsersController;
 use App\Controller\Admin\PostsController;
+use App\Controller\Admin\PagesController;
+use App\Controller\Admin\SettingsController;
 
 // Роуты основных страниц (GET)
 $router->get('/', MainController::class . '@showPage');
@@ -33,8 +35,9 @@ $router->post('/auth/login/run', AuthController::class . '@login');
 $router->post('/subscribe/sign', SubscriptionController::class . '@sign');
 $router->post('/subscribe/unsubscribe', SubscriptionController::class . '@unsubscribe');
 
-// Роуты основных страниц (GET)
+// Роуты основных страниц админки (GET)
 $router->get('/admin', DashboardController::class . '@showPage');
 $router->get('/admin/users', UsersController::class . '@showPage');
 $router->get('/admin/posts', PostsController::class . '@showPage');
-
+$router->get('/admin/pages', PagesController::class . '@showPage');
+$router->get('/admin/settings', SettingsController::class . '@showPage');
