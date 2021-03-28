@@ -17,7 +17,15 @@ $theme->header('Posts', true);
                         );
 
                         ?>
-                        <h4 class="card-title">Posts</h4>
+                        <h4 class="card-title">
+                            Posts&nbsp;
+                            <a href="/admin/create/post" class="btn btn-create">
+                                <i class="mdi me-2 mdi-plus"
+                                   style="margin-right: 2px!important;">
+                                </i>
+                            </a>
+                        </h4>
+
                         <div class="table-responsive">
                             <table class="table user-table">
                                 <thead>
@@ -32,14 +40,14 @@ $theme->header('Posts', true);
                                 <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">The Best Cat Toys</a></td>
                                     <td><a href="#">User</a></td>
                                     <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/post/3" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
@@ -48,14 +56,14 @@ $theme->header('Posts', true);
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">The Best Cat Toys</a></td>
                                     <td><a href="#">User</a></td>
                                     <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/post/3" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
@@ -64,14 +72,14 @@ $theme->header('Posts', true);
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">The Best Cat Toys</a></td>
                                     <td><a href="#">User</a></td>
                                     <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/post/3" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
@@ -80,14 +88,14 @@ $theme->header('Posts', true);
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">The Best Cat Toys</a></td>
                                     <td><a href="#">User</a></td>
                                     <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/post/3" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
@@ -96,14 +104,14 @@ $theme->header('Posts', true);
                                 </tr>
                                 <tr>
                                     <td>5</td>
-                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">The Best Cat Toys</a></td>
                                     <td><a href="#">User</a></td>
                                     <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/post/3" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
@@ -112,14 +120,14 @@ $theme->header('Posts', true);
                                 </tr>
                                 <tr>
                                     <td>6</td>
-                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">The Best Cat Toys</a></td>
                                     <td><a href="#">User</a></td>
                                     <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/post/3" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
@@ -128,14 +136,14 @@ $theme->header('Posts', true);
                                 </tr>
                                 <tr>
                                     <td>7</td>
-                                    <td>The Best Cat Toys</td>
+                                    <td><a href="#">The Best Cat Toys</a></td>
                                     <td><a href="#">User</a></td>
                                     <td>March 15, 2021 at 6:19 PM</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/post/3" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Config;
 use App\View\View;
 
 /**
@@ -15,6 +16,11 @@ class PagesController extends BaseController
      */
     public function showPage(): View
     {
-        return new View('admin.pages');
+        $paginationParams = Config::getInstance()
+            ->getConfig('pagination.admin_panel.pages');
+
+        return new View('admin.pages', [
+            'paginationParams' => $paginationParams
+        ]);
     }
 }

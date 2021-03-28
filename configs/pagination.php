@@ -10,6 +10,10 @@ return [
             'per_page_values' => [10, 20, 50, 200],
             'per_page_default' => 20,
         ],
+        'pages' => [
+            'per_page_values' => [10, 20, 50, 200],
+            'per_page_default' => 20,
+        ],
     ],
     'site' => [
         'posts_per_page_default' => 2,

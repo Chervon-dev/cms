@@ -17,7 +17,15 @@ $theme->header('Users', true);
                         );
 
                         ?>
-                        <h4 class="card-title">Users</h4>
+                        <h4 class="card-title">
+                            Users&nbsp;
+                            <a href="/admin/create/user" class="btn btn-create">
+                                <i class="mdi me-2 mdi-plus"
+                                   style="margin-right: 2px!important;">
+                                </i>
+                            </a>
+                        </h4>
+
                         <div class="table-responsive">
                             <table class="table user-table">
                                 <thead>
@@ -32,14 +40,14 @@ $theme->header('Users', true);
                                 <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>Deshmukh</td>
+                                    <td><a href="/users/33">Deshmukh</a></td>
                                     <td>Prohaska</td>
                                     <td>@Genelia</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/user/33" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
@@ -48,14 +56,14 @@ $theme->header('Users', true);
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>Deshmukh</td>
+                                    <td><a href="/users/33">Deshmukh</a></td>
                                     <td>Gaylord</td>
                                     <td>@Ritesh</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/user/33" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
@@ -64,14 +72,14 @@ $theme->header('Users', true);
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>Sanghani</td>
+                                    <td><a href="/users/33">Deshmukh</a></td>
                                     <td>Gusikowski</td>
                                     <td>@Govinda</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/user/33" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
@@ -80,14 +88,14 @@ $theme->header('Users', true);
                                 </tr>
                                 <tr>
                                     <td>4</td>
-                                    <td>Roshan</td>
+                                    <td><a href="/users/33">Deshmukh</a></td>
                                     <td>Rogahn</td>
                                     <td>@Hritik</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/user/33" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
@@ -96,14 +104,14 @@ $theme->header('Users', true);
                                 </tr>
                                 <tr>
                                     <td>5</td>
-                                    <td>Joshi</td>
+                                    <td><a href="/users/33">Deshmukh</a></td>
                                     <td>Hickle</td>
                                     <td>@Maruti</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/user/33" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
@@ -112,14 +120,14 @@ $theme->header('Users', true);
                                 </tr>
                                 <tr>
                                     <td>6</td>
-                                    <td>Nigam</td>
+                                    <td><a href="/users/33">Deshmukh</a></td>
                                     <td>Eichmann</td>
                                     <td>@Sonu</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/user/33" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
@@ -128,14 +136,14 @@ $theme->header('Users', true);
                                 </tr>
                                 <tr>
                                     <td>7</td>
-                                    <td>Nigam</td>
+                                    <td><a href="/users/33">Deshmukh</a></td>
                                     <td>Eichmann</td>
                                     <td>@Sonu</td>
                                     <td>
-                                        <button class="btn btn-change">
+                                        <a href="/admin/change/user/33" class="btn btn-change">
                                             <i class="mdi me-2 mdi-account-edit"></i>
                                             Change
-                                        </button>
+                                        </a>
                                         <button class="btn btn-delete">
                                             <i class="mdi me-2 mdi-delete"></i>
                                             Delete
