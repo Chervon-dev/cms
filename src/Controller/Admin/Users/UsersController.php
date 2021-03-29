@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\Users;
 
 use App\Config;
+use App\Controller\Admin\BaseController;
 use App\View\View;
 
 /**
  * Class UsersController
- * @package App\Controller\Admin
+ * @package App\Controller\Admin\Users
  */
 class UsersController extends BaseController
 {

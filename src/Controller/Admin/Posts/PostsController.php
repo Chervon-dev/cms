@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\Posts;
 
 use App\Config;
+use App\Controller\Admin\BaseController;
 use App\View\View;
 
 /**
  * Class PostsController
- * @package App\Controller\Admin
+ * @package App\Controller\Admin\Posts
  */
 class PostsController extends BaseController
 {

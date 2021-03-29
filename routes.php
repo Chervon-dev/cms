@@ -5,11 +5,17 @@ use App\Controller\MainController;
 use App\Controller\PostController;
 use App\Controller\UserController;
 use App\Controller\SubscriptionController;
-use App\Controller\Admin\DashboardController;
-use App\Controller\Admin\UsersController;
-use App\Controller\Admin\PostsController;
-use App\Controller\Admin\PagesController;
+
 use App\Controller\Admin\SettingsController;
+use App\Controller\Admin\DashboardController;
+
+use App\Controller\Admin\Users\UsersController;
+use App\Controller\Admin\Posts\PostsController;
+use App\Controller\Admin\Pages\PagesController;
+
+use App\Controller\Admin\Users\UserController as AdminUserController;
+use App\Controller\Admin\Posts\PostController as AdminPostController;
+use App\Controller\Admin\Pages\PageController;
 
 // Роуты основных страниц (GET)
 $router->get('/', MainController::class . '@showPage');
@@ -41,3 +47,13 @@ $router->get('/admin/users', UsersController::class . '@showPage');
 $router->get('/admin/posts', PostsController::class . '@showPage');
 $router->get('/admin/pages', PagesController::class . '@showPage');
 $router->get('/admin/settings', SettingsController::class . '@showPage');
+
+// Роуты страниц админки для изменения данных (GET)
+$router->get('/admin/change/user/*', AdminUserController::class . '@changePage');
+$router->get('/admin/change/post/*', AdminPostController::class . '@changePage');
+$router->get('/admin/change/page/*', PageController::class . '@changePage');
+
+// Роуты страниц админки для создания сущности (GET)
+$router->get('/admin/create/user', AdminUserController::class . '@createPage');
+$router->get('/admin/create/post', AdminPostController::class . '@createPage');
+$router->get('/admin/create/page', PageController::class . '@createPage');
