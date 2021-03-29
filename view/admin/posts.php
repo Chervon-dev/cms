@@ -13,7 +13,10 @@ $theme->header('Posts', true);
 
                         $theme->block(
                             'admin/select-perpage',
-                            ['params' => $paginationParams]
+                            [
+                                'params' => $paginationParams,
+                                'label' => 'Per page config:',
+                            ]
                         );
 
                         ?>

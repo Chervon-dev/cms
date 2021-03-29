@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Config;
 use App\View\View;
 
 /**
@@ -15,6 +16,11 @@ class SettingsController extends BaseController
      */
     public function showPage(): View
     {
-        return new View('admin.settings');
+        $paginationParams = Config::getInstance()
+            ->getConfig('pagination.site');
+
+        return new View('admin.settings', [
+            'paginationParams' => $paginationParams
+        ]);
     }
 }

@@ -16,6 +16,7 @@ return [
         ],
     ],
     'site' => [
-        'posts_per_page_default' => 2,
+        'per_page_values' => [5, 10, 15, 20],
+        'per_page_default' => 5,
     ],
 ];
