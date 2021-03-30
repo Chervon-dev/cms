@@ -11,20 +11,20 @@ $theme->header('Create post', true);
                 <br>
                 <div class="tab-pane" id="settings" role="tabpanel">
                     <form class="form-horizontal form-material mx-2">
+                        <div class="form-group" style="width: 400px;">
+                            <label class="col-md-12">Title</label>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control form-control-line ps-0">
+                            </div>
+                        </div>
+                        <br>
                         <div class="form-group">
-                            <label class="col-md-12" style="margin-bottom: 23px">Image</label>
+                            <label class="col-md-12" style="margin-bottom: 17px">Image</label>
                             <div class="example-3">
                                 <label for="custom-file-upload" class="filupp">
                                     <span class="filupp-file-name js-value">Upload image</span>
                                     <input type="file" name="attachment-file" value="1" id="custom-file-upload">
                                 </label>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="form-group" style="width: 400px;">
-                            <label class="col-md-12">Title</label>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control form-control-line ps-0">
                             </div>
                         </div>
                         <br>

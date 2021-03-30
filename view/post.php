@@ -44,10 +44,6 @@ $theme->header($title);
                         <div class="media comment-form">
                             <h5>Leave a Comment:</h5>
                             <div class="form-group">
-                                <label>Name<span class="required">*</span></label>
-                                <input type="text" name="name" class="form-control input-field" required="">
-                                <label>Email Adress <span class="required">*</span></label>
-                                <input type="email" name="email" class="form-control input-field" required="">
                                 <label>Comment<span class="required">*</span></label>
                                 <textarea name="comment" id="comment" class="textarea-field form-control" rows="3"
                                           required=""></textarea>

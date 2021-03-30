@@ -1,5 +1,6 @@
 <?php
 
+use App\Controller\Admin\Posts\CommentController;
 use App\Controller\AuthController;
 use App\Controller\MainController;
 use App\Controller\PostController;
@@ -52,8 +53,10 @@ $router->get('/admin/settings', SettingsController::class . '@showPage');
 $router->get('/admin/change/user/*', AdminUserController::class . '@changePage');
 $router->get('/admin/change/post/*', AdminPostController::class . '@changePage');
 $router->get('/admin/change/page/*', PageController::class . '@changePage');
+$router->get('/admin/show/comment/*', CommentController::class . '@changePage');
 
 // Роуты страниц админки для создания сущности (GET)
 $router->get('/admin/create/user', AdminUserController::class . '@createPage');
 $router->get('/admin/create/post', AdminPostController::class . '@createPage');
 $router->get('/admin/create/page', PageController::class . '@createPage');
+$router->get('/admin/create/comment/for/*', CommentController::class . '@createPage');

@@ -1,0 +1,34 @@
+<?php
+
+$theme->header('Comment', true);
+
+?>
+
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Comment by <a href="/users/33">Deshmukh</a></h4>
+                <br>
+                <div class="tab-pane" id="settings" role="tabpanel">
+                    <form class="form-horizontal form-material mx-2">
+                        <div class="form-group">
+                            <label class="col-md-12">Text</label>
+                            <div class="col-md-12">
+                                <textarea rows="5" class="form-control form-control-line ps-0">Lorem ipsum mather</textarea>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group" style="overflow: visible">
+                            <div class="col-sm-12">
+                                <button class="btn btn-success text-white">Update comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php
+
+$theme->footer(true);
