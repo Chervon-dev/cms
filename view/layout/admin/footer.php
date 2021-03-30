@@ -18,6 +18,14 @@
 <script src="/view/admin/assets/plugins/c3-master/c3.min.js"></script>
 <script src="/view/admin/assets/js/pages/dashboards/dashboard1.js"></script>
 <script src="/view/admin/assets/js/custom.js"></script>
+<script>
+
+    $('#custom-file-upload').change(function () {
+        var value = $("#custom-file-upload").val().split('/').pop().split('\\').pop();
+        $('.js-value').text(value);
+    });
+
+</script>
 
 </body>
 

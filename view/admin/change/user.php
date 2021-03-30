@@ -1,6 +1,6 @@
 <?php
 
-$theme->header('Admin Panel', true);
+$theme->header('Update user', true);
 
 ?>
 
@@ -14,7 +14,7 @@ $theme->header('Admin Panel', true);
                         <div class="form-group" style="width: 400px;">
                             <label class="col-md-12">Name</label>
                             <div class="col-md-12">
-                                <input type="text" placeholder="Johnathan Doe"
+                                <input type="text" value="Johnathan Doe"
                                        class="form-control form-control-line ps-0">
                             </div>
                         </div>
@@ -22,7 +22,7 @@ $theme->header('Admin Panel', true);
                         <div class="form-group" style="width: 400px;">
                             <label for="example-email" class="col-md-12">Email</label>
                             <div class="col-md-12">
-                                <input type="email" placeholder="johnathan@admin.com"
+                                <input type="email" value="johnathan@admin.com"
                                        class="form-control form-control-line ps-0" name="example-email"
                                        id="example-email">
                             </div>
@@ -32,6 +32,16 @@ $theme->header('Admin Panel', true);
                             <label class="col-md-12">Password</label>
                             <div class="col-md-12">
                                 <input type="password" value="password" class="form-control form-control-line ps-0">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label class="col-md-12" style="margin-bottom: 23px">Avatar</label>
+                            <div class="example-3">
+                                <label for="custom-file-upload" class="filupp">
+                                    <span class="filupp-file-name js-value">Upload new avatar</span>
+                                    <input type="file" name="attachment-file" value="1" id="custom-file-upload">
+                                </label>
                             </div>
                         </div>
                         <br>

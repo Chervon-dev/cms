@@ -1,6 +1,6 @@
 <?php
 
-$theme->header('Admin Panel', true);
+$theme->header('Create user', true);
 
 ?>
 
@@ -32,6 +32,16 @@ $theme->header('Admin Panel', true);
                             <label class="col-md-12">Password</label>
                             <div class="col-md-12">
                                 <input type="password" class="form-control form-control-line ps-0">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label class="col-md-12" style="margin-bottom: 23px">Avatar</label>
+                            <div class="example-3">
+                                <label for="custom-file-upload" class="filupp">
+                                    <span class="filupp-file-name js-value">Upload avatar</span>
+                                    <input type="file" name="attachment-file" value="1" id="custom-file-upload">
+                                </label>
                             </div>
                         </div>
                         <br>

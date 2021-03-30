@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin\Posts;
 
+use App\Config;
 use App\Controller\Admin\BaseController;
 use App\View\View;
 
@@ -25,6 +26,11 @@ class PostController extends BaseController
      */
     public function changePage(int $id): View
     {
-        return new View('admin.change.post');
+        $paginationParams = Config::getInstance()
+            ->getConfig('pagination.admin_panel.comments');
+
+        return new View('admin.change.post', [
+            'paginationParams' => $paginationParams
+        ]);
     }
 }
