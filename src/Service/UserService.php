@@ -24,6 +24,44 @@ use Illuminate\Database\Eloquent\Model;
 class UserService
 {
     /**
+     * Возвращает Email активного пользователя
+     * @return string|null
+     */
+    public function getActiveEmail(): ?string
+    {
+        $user = $this->getAllById(getActiveUserId());
+        return $user ? $user->email : null;
+    }
+
+    /**
+     * Возвращает данные активного пользователя
+     * @return array
+     */
+    public function getActiveDataForAdmin(): array
+    {
+        $user = $this->getAllById(getActiveUserId());
+
+        if ($user) {
+            return [
+                'name' => $user->name,
+                'avatar' => $user->avatar ?? 'default.jpg',
+            ];
+        }
+
+        return [];
+    }
+
+    /**
+     * Возвращает Role_id активного пользователя
+     * @return int
+     */
+    public function getActiveRoleId(): int
+    {
+        $user = $this->getAllById(getActiveUserId());
+        return $user ? $user->role_id : 3;
+    }
+
+    /**
      * Выполняет валидацию данных и регестрирует пользователя
      * @return JsonResponse
      */

@@ -1,3 +1,13 @@
+<?php
+
+use App\Service\SubscriptionService;
+use App\Service\UserService;
+
+$subscribe = new SubscriptionService();
+$user = new UserService();
+
+?>
+
 <footer style="padding: 50px 0 55px">
 
     <div class="container" style="display:flex; align-items: center">
@@ -19,7 +29,7 @@
                 <?php if (isAuthorized()): ?>
 
                     <input class="form-control topSubscribe" id="email" name="email" type="hidden"
-                           placeholder="Email address" value="<?= getActiveEmail() ?>" style="margin-bottom: -10px;">
+                           placeholder="Email address" value="<?= $user->getActiveEmail() ?>" style="margin-bottom: -10px;">
 
                 <?php else: ?>
 
@@ -57,7 +67,7 @@
 <script src="/view/assets/js/ajax/subscribe.js"></script>
 <script src="/view/assets/js/drag_and_drop.js"></script>
 
-<?php if (isAuthorized() && checkSubscribeByEmail(getActiveEmail())): ?>
+<?php if (isAuthorized() && $subscribe->checkByEmail($user->getActiveEmail())): ?>
 
     <script>
         updateButton(document.getElementById("subscription"))

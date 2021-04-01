@@ -2,6 +2,8 @@
 
 namespace App\View;
 
+use App\Service\UserService;
+
 /**
  * Класс для работы с подключениями шаблонов
  * Class Theme
@@ -22,9 +24,12 @@ class Theme
         $headerPath = 'layout/header.php';
 
         if ($isAdmin) {
-            $user = getActiveUserDataForAdmin();
+            $userService = new UserService();
+            $user = $userService->getActiveDataForAdmin();
+
             $data['name'] = $user['name'];
             $data['avatar'] = $user['avatar'];
+
             $headerPath = 'layout/admin/header.php';
         }
 

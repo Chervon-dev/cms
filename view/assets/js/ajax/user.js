@@ -148,7 +148,7 @@ const user = {
 
                 if (result === '"You are successfully login!"') {
                     setTimeout(() => {
-                        window.location.href = "/";
+                        location.reload();
                     }, 1000);
                 }
             }

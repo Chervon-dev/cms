@@ -2,6 +2,7 @@
 
 namespace App\Rule;
 
+use App\Service\UserService;
 use App\Validator\Validator;
 
 /**
@@ -49,8 +50,9 @@ class ExistsRule extends Rule
      */
     public function run(): void
     {
+        $userService = new UserService();
         if ($this->checkValueInTable($this->value, $this->table, $this->column) &&
-            $this->value !== getActiveEmail()
+            $this->value !== $userService->getActiveEmail()
         ) {
             $this->validator->setError('isset_' . $this->column);
         }

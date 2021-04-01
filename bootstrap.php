@@ -16,8 +16,5 @@ use App\Session;
 Session::setParams(2592000, '/');
 Session::start();
 
-// Файл вспомагательных функций
+// Файл вспомогательных функций
 require APP_DIR . '/helper/helpers.php';
-
-// Файл редиректов
-require APP_DIR . '/helper/redirects.php';

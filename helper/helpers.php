@@ -50,56 +50,6 @@ function isAuthorized(): bool
 }
 
 /**
- * Проверяет, находиться ли пользователь
- * на странице аутентификации
- * @return bool
- */
-function isAuthPage(): bool
-{
-    return $_SERVER['REQUEST_URI'] == '/auth/login'
-        || $_SERVER['REQUEST_URI'] == '/auth/signup';
-}
-
-/**
- * Возвращает Email активного пользователя
- * @return string|null
- */
-function getActiveEmail(): ?string
-{
-    if (!getActiveUserId()) {
-        return null;
-    }
-
-    $userService = new UserService();
-    return $userService->getAllById(getActiveUserId())->email;
-}
-
-/**
- * Возвращает данные активного пользователя
- * @return array
- */
-function getActiveUserDataForAdmin(): array
-{
-    $userService = new UserService();
-    $user = $userService->getAllById(getActiveUserId());
-
-    return [
-        'name' => $user->name,
-        'avatar' => $user->avatar ?? 'default.jpg',
-    ];
-}
-
-/**
- * Возвращает Role_id активного пользователя
- * @return int
- */
-function getActiveRoleId(): int
-{
-    $userService = new UserService();
-    return $userService->getAllById(getActiveUserId())->role_id;
-}
-
-/**
  * Возвращает Email активного пользователя
  * @return string|null
  */
@@ -129,16 +79,6 @@ function isTrueEmailAddress(string $email): bool
 }
 
 /**
- * Проверяет, подписан ли пользователь (по Email)
- * @param string $email
- * @return bool
- */
-function checkSubscribeByEmail(string $email): bool
-{
-    return Subscription::query()->where('email', $email)->exists();
-}
-
-/**
  * Возвращает строку после первого вхождения символа
  * @param string $string
  * @param string $character
@@ -150,7 +90,7 @@ function getStringAfterCharacter(string $string, string $character): bool|string
 }
 
 /**
- * Возвращает отранслитированную строку
+ * Возвращает оттранслированную строку
  * @param $string
  * @return string|null
  */

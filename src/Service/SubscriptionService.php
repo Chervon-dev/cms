@@ -14,7 +14,17 @@ use App\Validator\SubscriptionValidator;
 class SubscriptionService
 {
     /**
-     * Регестрирует подписку (подписывает пользователя)
+     * Проверяет, подписан ли пользователь (по Email)
+     * @param string $email
+     * @return bool
+     */
+    public function checkByEmail(string $email): bool
+    {
+        return Subscription::query()->where('email', $email)->exists();
+    }
+
+    /**
+     * Регистрирует подписку (подписывает пользователя)
      * @return JsonResponse
      */
     public function sign(): JsonResponse
@@ -43,8 +53,9 @@ class SubscriptionService
      */
     public function unsubscribe(): void
     {
+        $userService = new UserService();
         $this->delete(
-            getActiveEmail()
+            $userService->getActiveEmail()
         );
     }
 

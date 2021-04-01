@@ -1,3 +1,13 @@
+<?php
+
+// Если пользователь авторизован и
+// пытается открыть страницу аутентификации
+if (isAuthorized()) {
+    header('location: /profile');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
