@@ -152,3 +152,34 @@ function getActiveClassForValidationByPage($page): string
 
     return '';
 }
+
+/**
+ * Возвращает, активна ли страница (для пагинации)
+ * @param $page
+ * @param $param
+ * @return string
+ */
+function getSelectedClassForValidationByPage($page, $param): string
+{
+    if (isset($_GET['limit']) && $page == $_GET['limit']) {
+        return 'selected';
+    }
+
+    if (!isset($_GET['limit']) && $page == $param) {
+        return 'selected';
+    }
+
+    return '';
+}
+
+/**
+ * @param string $param
+ * @param $value
+ * @return string
+ */
+function getParams(string $param, $value): string
+{
+    $params = $_GET;
+    $params[$param] = $value;
+    return '?' . http_build_query($params);
+}

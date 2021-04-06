@@ -21,7 +21,7 @@ $theme->header('Create comment', true);
                         <br>
                         <div class="form-group" style="overflow: visible">
                             <div class="col-sm-12">
-                                <button class="btn btn-success text-white">Add comment</button>
+                                <button class="btn btn-success text-white">Publish comment</button>
                             </div>
                         </div>
                     </form>

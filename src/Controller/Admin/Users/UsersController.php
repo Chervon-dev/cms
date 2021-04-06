@@ -4,6 +4,7 @@ namespace App\Controller\Admin\Users;
 
 use App\Config;
 use App\Controller\Admin\BaseController;
+use App\Service\Admin\UserService;
 use App\View\View;
 
 /**
@@ -13,20 +14,24 @@ use App\View\View;
 class UsersController extends BaseController
 {
     /**
+     * @var UserService
+     */
+    private UserService $userService;
+
+    /**
+     * UsersController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->userService = new UserService();
+    }
+
+    /**
      * @return View
      */
     public function showPage(): View
     {
-        /** @var Config $paginationParams */
-        $paginationParams = Config::getInstance()
-            ->getConfig('pagination.admin_panel.users');
-
-        if ($this->role === 2) {
-            return new View('admin.not-allowed');
-        }
-
-        return new View('admin.users', [
-            'paginationParams' => $paginationParams
-        ]);
+        return $this->userService->showUsersPage($this->role);
     }
 }

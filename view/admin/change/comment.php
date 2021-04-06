@@ -20,7 +20,7 @@ $theme->header('Comment', true);
                         <br>
                         <div class="form-group" style="overflow: visible">
                             <div class="col-sm-12">
-                                <button class="btn btn-success text-white">Update comment</button>
+                                <button class="btn btn-success text-white">Publish comment</button>
                             </div>
                         </div>
                     </form>

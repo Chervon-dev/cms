@@ -28,134 +28,16 @@ $theme->header('Users', true);
                                 </i>
                             </a>
                         </h4>
+                        <?php
 
-                        <div class="table-responsive">
-                            <table class="table user-table">
-                                <thead>
-                                <tr>
-                                    <th class="border-top-0">#</th>
-                                    <th class="border-top-0">Name</th>
-                                    <th class="border-top-0">Email</th>
-                                    <th class="border-top-0">Role</th>
-                                    <th class="border-top-0" style="width: 230px"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="/users/33">Deshmukh</a></td>
-                                    <td>Prohaska</td>
-                                    <td>@Genelia</td>
-                                    <td>
-                                        <a href="/admin/change/user/33" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><a href="/users/33">Deshmukh</a></td>
-                                    <td>Gaylord</td>
-                                    <td>@Ritesh</td>
-                                    <td>
-                                        <a href="/admin/change/user/33" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><a href="/users/33">Deshmukh</a></td>
-                                    <td>Gusikowski</td>
-                                    <td>@Govinda</td>
-                                    <td>
-                                        <a href="/admin/change/user/33" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td><a href="/users/33">Deshmukh</a></td>
-                                    <td>Rogahn</td>
-                                    <td>@Hritik</td>
-                                    <td>
-                                        <a href="/admin/change/user/33" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td><a href="/users/33">Deshmukh</a></td>
-                                    <td>Hickle</td>
-                                    <td>@Maruti</td>
-                                    <td>
-                                        <a href="/admin/change/user/33" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td><a href="/users/33">Deshmukh</a></td>
-                                    <td>Eichmann</td>
-                                    <td>@Sonu</td>
-                                    <td>
-                                        <a href="/admin/change/user/33" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td><a href="/users/33">Deshmukh</a></td>
-                                    <td>Eichmann</td>
-                                    <td>@Sonu</td>
-                                    <td>
-                                        <a href="/admin/change/user/33" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        $theme->block(
+                            'admin/users-list',
+                            [
+                                'users' => $users->items()
+                            ]
+                        );
+
+                        ?>
                     </div>
                 </div>
             </div>
@@ -163,7 +45,7 @@ $theme->header('Users', true);
 
         <?php
 
-        $theme->block('admin/pagination');
+        $theme->block('admin/pagination', ['paginator' => $users]);
 
         ?>
 

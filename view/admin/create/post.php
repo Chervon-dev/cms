@@ -44,7 +44,7 @@ $theme->header('Create post', true);
                         <br>
                         <div class="form-group" style="overflow: visible">
                             <div class="col-sm-12">
-                                <button class="btn btn-success text-white">Create post</button>
+                                <button class="btn btn-success text-white">Publish post</button>
                             </div>
                         </div>
                     </form>

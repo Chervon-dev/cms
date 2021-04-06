@@ -5,11 +5,11 @@
         </div>
         <div class="col-auto" style="font-weight: 100">
             <div class="col-sm-12 border-bottom">
-                <select class="form-select shadow-none border-0 ps-0" style="width: 60px;"
+                <select class="form-select shadow-none border-0 ps-0" id="peprage-select" style="width: 60px;"
                         aria-label="Default select example">
 
                     <?php foreach ($params['per_page_values'] as $value): ?>
-                        <option value="<?= $value ?>" <?= $value == $params['per_page_default'] ? 'selected' : '' ?>>
+                        <option value="<?= $value ?>" <?= getSelectedClassForValidationByPage($value, $params['per_page_default']) ?>>
                             <?= $value ?>
                         </option>
                     <?php endforeach; ?>

@@ -33,7 +33,7 @@ $theme->header('Pages', true);
                         <br>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <button class="btn btn-success text-white">Create page</button>
+                                <button class="btn btn-success text-white">Publish page</button>
                             </div>
                         </div>
                     </form>

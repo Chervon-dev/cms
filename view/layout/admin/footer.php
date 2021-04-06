@@ -18,6 +18,8 @@
 <script src="/view/admin/assets/plugins/c3-master/c3.min.js"></script>
 <script src="/view/admin/assets/js/pages/dashboards/dashboard1.js"></script>
 <script src="/view/admin/assets/js/custom.js"></script>
+<script src="/view/admin/assets/js/ajax/perpage.js"></script>
+<script src="/view/admin/assets/js/ajax/delete.js"></script>
 <script>
 
     $('#custom-file-upload').change(function () {

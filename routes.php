@@ -43,7 +43,7 @@ $router->post('/subscribe/sign', SubscriptionController::class . '@sign');
 $router->post('/subscribe/unsubscribe', SubscriptionController::class . '@unsubscribe');
 
 // Роуты основных страниц админки (GET)
-$router->get('/admin', DashboardController::class . '@showPage');
+$router->get('/admin/', DashboardController::class . '@showPage');
 $router->get('/admin/users', UsersController::class . '@showPage');
 $router->get('/admin/posts', PostsController::class . '@showPage');
 $router->get('/admin/pages', PagesController::class . '@showPage');
