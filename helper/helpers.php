@@ -1,7 +1,5 @@
 <?php
 
-use App\Model\Subscription;
-use App\Service\UserService;
 use App\Session;
 use App\View\Theme;
 

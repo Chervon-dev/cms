@@ -12,7 +12,7 @@
         <tbody>
 
         <?php foreach ($users as $id => $user): ?>
-            <tr>
+            <tr id="user_<?= $user->id ?>">
                 <td><?= $user->id ?></td>
                 <td><a href="/users/<?= $user->id ?>"><?= $user->name ?></a></td>
                 <td><?= $user->email ?></td>

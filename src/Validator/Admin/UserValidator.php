@@ -18,11 +18,12 @@ class UserValidator extends Validator
     {
         $rules = [
             'name' => 'required',
+            'password' => 'required',
             'email' => 'required|email',
         ];
 
         // Устанавливает данные об успехе
-        $this->setSuccessMessage('You are successfully update!');
+        $this->setSuccessMessage('Success!');
         return $this->validate($rules);
     }
 }

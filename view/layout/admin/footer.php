@@ -21,6 +21,7 @@
 <script src="/view/admin/assets/js/ajax/perpage.js"></script>
 <script src="/view/admin/assets/js/ajax/delete.js"></script>
 <script src="/view/admin/assets/js/ajax/change.js"></script>
+<script src="/view/admin/assets/js/ajax/create.js"></script>
 <script>
 
     $('#custom-file-upload').change(function () {

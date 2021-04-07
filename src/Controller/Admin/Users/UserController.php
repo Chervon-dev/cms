@@ -40,7 +40,14 @@ class UserController extends BaseController
      */
     public function createPage(): View
     {
-        return new View('admin.create.user');
+        $roles = $this->roleService->getAll();
+
+        return new View(
+            'admin.create.user',
+            [
+                'roles' => $roles
+            ]
+        );
     }
 
     /**
@@ -68,5 +75,22 @@ class UserController extends BaseController
     public function change(): JsonResponse
     {
         return $this->userService->update();
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public function delete(): void
+    {
+        $this->userService->delete();
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function create(): JsonResponse
+    {
+        return $this->userService->create();
     }
 }

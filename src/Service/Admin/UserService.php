@@ -22,6 +22,15 @@ use Illuminate\Database\Eloquent\Model;
 class UserService
 {
     /**
+     * @param int $id
+     * @return string
+     */
+    private function getEmailById(int $id): string
+    {
+        return User::query()->find($id)->email;
+    }
+
+    /**
      * @param int $role
      * @return View
      */
@@ -116,18 +125,23 @@ class UserService
         // Валидатор
         $validator = new UserValidator($data);
 
+        $issetEmail = User::query()->where('email', $email)->exists();
+        if ($issetEmail && $this->getEmailById($id) !== $email) {
+            $validator->setError('isset_email');
+        }
+
         // Валидация
         if (!$validator->rules()) {
             return $validator->getErrors();
         }
 
-        if ($password !== '') {
+        if ($password != '') {
             $data['password'] = password_hash($password, PASSWORD_DEFAULT);
         }
 
         User::query()->find($id)->update($data);
-        $emailSubscription = Subscription::query()->where('email', $email);
 
+        $emailSubscription = Subscription::query()->where('email', $email);
         if ($subscribe === 'false') {
             $emailSubscription->delete();
 
@@ -138,5 +152,58 @@ class UserService
         }
 
         return $validator->getSuccess();
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function create(): JsonResponse
+    {
+        $name = htmlspecialchars($_POST['name']);
+        $email = htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['password']);
+        $about = htmlspecialchars($_POST['about']);
+        $role = (int)htmlspecialchars($_POST['role']);
+        $subscribe = htmlspecialchars($_POST['subscribe']);
+
+        $data = [
+            'name' => $name,
+            'email' => $email,
+            'about' => $about,
+            'role_id' => $role,
+            'password' => $password,
+            'avatar' => 'default.jpg'
+        ];
+
+        // Валидатор
+        $validator = new UserValidator($data);
+
+        $issetEmail = User::query()->where('email', $email)->exists();
+        if ($issetEmail) {
+            $validator->setError('isset_email');
+        }
+
+        // Валидация
+        if (!$validator->rules()) {
+            return $validator->getErrors();
+        }
+
+        if ($subscribe === 'true') {
+            Subscription::query()->insert(['email' => $email]);
+        }
+
+        $data['password'] = password_hash($password, PASSWORD_DEFAULT);
+        User::query()->insert($data);
+        return $validator->getSuccess();
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public function delete()
+    {
+        $id = $_POST['id'];
+        User::query()->find($id)->delete();
     }
 }

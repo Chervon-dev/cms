@@ -1,4 +1,4 @@
-const changeItem = {
+const createItem = {
 
     showError: function (error, object, message) {
         if (!error.length) {
@@ -14,7 +14,7 @@ const changeItem = {
         error.remove();
     },
 
-    user: function (id) {
+    user: function () {
 
         const formData = new FormData();
 
@@ -28,8 +28,8 @@ const changeItem = {
 
         var nameError = $('#user_name + .error_admin');
         var emailError = $('#user_email + .error_admin');
+        var passwordError = $('#user_password + .error_admin');
 
-        formData.append('id', id);
         formData.append('name', name.val());
         formData.append('email', email.val());
         formData.append('password', password.val());
@@ -38,7 +38,7 @@ const changeItem = {
         formData.append('subscribe', subscribe.prop('checked'));
 
         $.ajax({
-            url: '/admin/change/user',
+            url: '/admin/create/user/post',
             type: 'POST',
             data: formData,
             cache: false,
@@ -47,28 +47,41 @@ const changeItem = {
             success: function (result) {
 
                 if (result.includes('"empty_name"')) {
-                    changeItem.showError(nameError, name, 'Name field cannot be empty');
+                    createItem.showError(nameError, name, 'Name field cannot be empty');
                 } else {
-                    changeItem.hideError(nameError, name);
+                    createItem.hideError(nameError, name);
                 }
 
                 if (result.includes('"empty_email"')) {
-                    changeItem.showError(emailError, email, 'Email field cannot be empty');
+                    createItem.showError(emailError, email, 'Email field cannot be empty');
 
                 } else if (result.includes('"isset_email"')) {
-                    changeItem.showError(emailError, email, 'User with this email already exists');
+                    createItem.showError(emailError, email, 'User with this email already exists');
 
                 } else if (result.includes('"wrong_email"')) {
-                    changeItem.showError(emailError, email, 'Invalid email type');
+                    createItem.showError(emailError, email, 'Invalid email type');
 
                 } else {
-                    changeItem.hideError(emailError, email);
+                    createItem.hideError(emailError, email);
+                }
+
+                if (result.includes('"empty_password"')) {
+                    createItem.showError(passwordError, password, 'Password field cannot be empty');
+                } else {
+                    createItem.hideError(passwordError, password);
                 }
 
                 if (result === '"Success!"') {
                     $("#updateUser").attr('disabled', true);
+
                     password.val('');
-                    alertSuccess.text('You have successfully update!');
+                    name.val('');
+                    email.val('');
+                    about.val('');
+                    role.val('');
+                    subscribe.prop('checked', true);
+
+                    alertSuccess.text('User successfully created!');
                     alertSuccess.removeClass('alert-exit');
                     alertSuccess.addClass('alert-active');
 
@@ -81,18 +94,17 @@ const changeItem = {
 
             }
         });
+    },
+
+    post: function () {
 
     },
 
-    post: function (id) {
+    page: function () {
 
     },
 
-    page: function (id) {
-
-    },
-
-    comment: function (id) {
+    comment: function () {
 
     },
 
