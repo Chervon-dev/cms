@@ -42,6 +42,7 @@ $router->post('/auth/login/run', AuthController::class . '@login');
 $router->post('/subscribe/sign', SubscriptionController::class . '@sign');
 $router->post('/subscribe/unsubscribe', SubscriptionController::class . '@unsubscribe');
 
+
 // Роуты основных страниц админки (GET)
 $router->get('/admin/', DashboardController::class . '@showPage');
 $router->get('/admin/users', UsersController::class . '@showPage');
@@ -60,3 +61,21 @@ $router->get('/admin/create/user', AdminUserController::class . '@createPage');
 $router->get('/admin/create/post', AdminPostController::class . '@createPage');
 $router->get('/admin/create/page', PageController::class . '@createPage');
 $router->get('/admin/create/comment/for/*', CommentController::class . '@createPage');
+
+// Роуты страниц админки для изменения данных (POST)
+$router->post('/admin/change/user', AdminUserController::class . '@change');
+$router->post('/admin/change/post', AdminPostController::class . '@change');
+$router->post('/admin/change/page', PageController::class . '@change');
+$router->post('/admin/change/comment', CommentController::class . '@change');
+
+// Роуты страниц админки для создания сущности (POST)
+$router->post('/admin/create/user/post', AdminUserController::class . '@create');
+$router->post('/admin/create/post/post', AdminPostController::class . '@create');
+$router->post('/admin/create/page/post', PageController::class . '@create');
+$router->post('/admin/create/comment/post', CommentController::class . '@create');
+
+// Роуты страниц админки для удаления сущности (POST)
+$router->post('/admin/delete/user', AdminUserController::class . '@delete');
+$router->post('/admin/delete/post', AdminPostController::class . '@delete');
+$router->post('/admin/delete/page', PageController::class . '@delete');
+$router->post('/admin/delete/comment', CommentController::class . '@delete');
