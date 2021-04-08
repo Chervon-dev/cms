@@ -151,7 +151,7 @@ $theme->header('Pages', true);
 
         <?php
 
-        $theme->block('admin/pagination');
+//        $theme->block('admin/pagination', ['paginator' => $pages]);
 
         ?>
 

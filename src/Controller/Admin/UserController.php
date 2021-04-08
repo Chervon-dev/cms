@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Controller\Admin\Users;
+namespace App\Controller\Admin;
 
-use App\Controller\Admin\BaseController;
 use App\Exception\NotFoundException;
 use App\JsonResponse;
 use App\Service\Admin\RoleService;
@@ -26,13 +25,21 @@ class UserController extends BaseController
     private RoleService $roleService;
 
     /**
-     * UserController constructor.
+     * UsersController constructor.
      */
     public function __construct()
     {
         parent::__construct();
         $this->userService = new UserService();
         $this->roleService = new RoleService();
+    }
+
+    /**
+     * @return View
+     */
+    public function usersPage(): View
+    {
+        return $this->userService->showUsersPage($this->role);
     }
 
     /**

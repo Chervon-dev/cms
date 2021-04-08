@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Controller\Admin\Posts;
+namespace App\Controller\Admin;
 
 use App\Config;
-use App\Controller\Admin\BaseController;
 use App\View\View;
 
 /**
@@ -12,6 +11,19 @@ use App\View\View;
  */
 class PostController extends BaseController
 {
+    /**
+     * @return View
+     */
+    public function postsPage(): View
+    {
+        $paginationParams = Config::getInstance()
+            ->getConfig('pagination.admin_panel.posts');
+
+        return new View('admin.posts', [
+            'paginationParams' => $paginationParams
+        ]);
+    }
+
     /**
      * @return View
      */

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller\Admin\Pages;
+namespace App\Controller\Admin;
 
-use App\Controller\Admin\BaseController;
+use App\Config;
 use App\View\View;
 
 /**
@@ -11,6 +11,19 @@ use App\View\View;
  */
 class PageController extends BaseController
 {
+    /**
+     * @return View
+     */
+    public function pagesPage(): View
+    {
+        $paginationParams = Config::getInstance()
+            ->getConfig('pagination.admin_panel.pages');
+
+        return new View('admin.pages', [
+            'paginationParams' => $paginationParams
+        ]);
+    }
+
     /**
      * @return View
      */

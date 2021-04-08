@@ -163,7 +163,7 @@ $theme->header('Posts', true);
 
         <?php
 
-        $theme->block('admin/pagination');
+//        $theme->block('admin/pagination', ['paginator' => $posts]);
 
         ?>
 

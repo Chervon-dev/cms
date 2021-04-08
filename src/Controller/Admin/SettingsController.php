@@ -14,7 +14,7 @@ class SettingsController extends BaseController
     /**
      * @return View
      */
-    public function showPage(): View
+    public function settingsPage(): View
     {
         $paginationParams = Config::getInstance()
             ->getConfig('pagination.site');

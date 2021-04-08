@@ -1,9 +1,7 @@
 <?php
 
+namespace App\Controller\Admin;
 
-namespace App\Controller\Admin\Posts;
-
-use App\Controller\Admin\BaseController;
 use App\View\View;
 
 /**

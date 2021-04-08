@@ -13,7 +13,7 @@ class DashboardController extends BaseController
     /**
      * @return View
      */
-    public function showPage(): View
+    public function dashboardPage(): View
     {
         return new View('admin.index');
     }
