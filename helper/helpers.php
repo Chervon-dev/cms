@@ -115,9 +115,8 @@ function toTranslit($string): string|null
     $url = strtr($string, $trans);
     $url = mb_strtolower($url);
 
-    $url = preg_replace("/[^a-z0-9-s,]/i", "", $url);
+    $url = preg_replace("/[^a-z0-9-s,]/i", "_", $url);
     $url = preg_replace("/[,-]/ui", " ", $url);
-    $url = preg_replace("/[s]+/ui", "-", $url);
 
     return $url;
 }

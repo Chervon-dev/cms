@@ -118,6 +118,16 @@ abstract class Validator
     }
 
     /**
+     * Проверяет, есть ли ошибка
+     * @param string $error
+     * @return bool
+     */
+    public function checkError(string $error): bool
+    {
+        return in_array($error, $this->errors);
+    }
+
+    /**
      * Регестрирует правила
      * @param string $key
      * @param mixed $value Значение из полученного массива

@@ -24,8 +24,8 @@
 <script src="/view/admin/assets/js/ajax/create.js"></script>
 <script>
 
-    $('#custom-file-upload').change(function () {
-        var value = $("#custom-file-upload").val().split('/').pop().split('\\').pop();
+    $('#post_img').change(function () {
+        var value = $("#post_img").val().split('/').pop().split('\\').pop();
         $('.js-value').text(value);
     });
 

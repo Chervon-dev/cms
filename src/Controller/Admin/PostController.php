@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Config;
+use App\Exception\NotFoundException;
+use App\JsonResponse;
 use App\Service\Admin\PostService;
 use App\View\View;
 
@@ -45,14 +47,35 @@ class PostController extends BaseController
     /**
      * @param int $id
      * @return View
+     * @throws NotFoundException
      */
     public function changePage(int $id): View
     {
-        $paginationParams = Config::getInstance()
-            ->getConfig('pagination.admin_panel.comments');
+        return $this->postService->showChangePage($id);
+    }
 
-        return new View('admin.change.post', [
-            'paginationParams' => $paginationParams
-        ]);
+    /**
+     * @return JsonResponse
+     */
+    public function change(): JsonResponse
+    {
+        return $this->postService->update();
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    public function delete(): void
+    {
+        $this->postService->delete();
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function create(): JsonResponse
+    {
+        return $this->postService->create();
     }
 }

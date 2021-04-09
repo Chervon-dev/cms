@@ -38,8 +38,9 @@ class RequiredRule extends Rule
      */
     public function run(): void
     {
-        if ($this->value == '') {
-            $this->validator->setError('empty_' . $this->field);
+        $message = 'empty_' . $this->field;
+        if ($this->value == '' && !$this->validator->checkError($message)) {
+            $this->validator->setError($message);
         }
     }
 }
