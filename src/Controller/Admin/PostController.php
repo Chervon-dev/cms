@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Config;
+use App\Service\Admin\PostService;
 use App\View\View;
 
 /**
@@ -12,16 +13,25 @@ use App\View\View;
 class PostController extends BaseController
 {
     /**
+     * @var PostService
+     */
+    private PostService $postService;
+
+    /**
+     * UsersController constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->postService = new PostService();
+    }
+
+    /**
      * @return View
      */
     public function postsPage(): View
     {
-        $paginationParams = Config::getInstance()
-            ->getConfig('pagination.admin_panel.posts');
-
-        return new View('admin.posts', [
-            'paginationParams' => $paginationParams
-        ]);
+        return $this->postService->showPostsPage();
     }
 
     /**

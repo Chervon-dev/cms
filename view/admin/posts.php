@@ -28,134 +28,16 @@ $theme->header('Posts', true);
                                 </i>
                             </a>
                         </h4>
+                        <?php
 
-                        <div class="table-responsive">
-                            <table class="table user-table">
-                                <thead>
-                                <tr>
-                                    <th class="border-top-0">#</th>
-                                    <th class="border-top-0">Title</th>
-                                    <th class="border-top-0">Author</th>
-                                    <th class="border-top-0">Date</th>
-                                    <th class="border-top-0" style="width: 230px"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td><a href="#">The Best Cat Toys</a></td>
-                                    <td><a href="#">User</a></td>
-                                    <td>March 15, 2021 at 6:19 PM</td>
-                                    <td>
-                                        <a href="/admin/change/post/3" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td><a href="#">The Best Cat Toys</a></td>
-                                    <td><a href="#">User</a></td>
-                                    <td>March 15, 2021 at 6:19 PM</td>
-                                    <td>
-                                        <a href="/admin/change/post/3" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td><a href="#">The Best Cat Toys</a></td>
-                                    <td><a href="#">User</a></td>
-                                    <td>March 15, 2021 at 6:19 PM</td>
-                                    <td>
-                                        <a href="/admin/change/post/3" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td><a href="#">The Best Cat Toys</a></td>
-                                    <td><a href="#">User</a></td>
-                                    <td>March 15, 2021 at 6:19 PM</td>
-                                    <td>
-                                        <a href="/admin/change/post/3" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td><a href="#">The Best Cat Toys</a></td>
-                                    <td><a href="#">User</a></td>
-                                    <td>March 15, 2021 at 6:19 PM</td>
-                                    <td>
-                                        <a href="/admin/change/post/3" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td><a href="#">The Best Cat Toys</a></td>
-                                    <td><a href="#">User</a></td>
-                                    <td>March 15, 2021 at 6:19 PM</td>
-                                    <td>
-                                        <a href="/admin/change/post/3" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td><a href="#">The Best Cat Toys</a></td>
-                                    <td><a href="#">User</a></td>
-                                    <td>March 15, 2021 at 6:19 PM</td>
-                                    <td>
-                                        <a href="/admin/change/post/3" class="btn btn-change">
-                                            <i class="mdi me-2 mdi-account-edit"></i>
-                                            Change
-                                        </a>
-                                        <button class="btn btn-delete">
-                                            <i class="mdi me-2 mdi-delete"></i>
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        $theme->block(
+                            'admin/posts-list',
+                            [
+                                'posts' => $posts->items()
+                            ]
+                        );
+
+                        ?>
                     </div>
                 </div>
             </div>
@@ -163,7 +45,7 @@ $theme->header('Posts', true);
 
         <?php
 
-//        $theme->block('admin/pagination', ['paginator' => $posts]);
+        $theme->block('admin/pagination', ['paginator' => $posts]);
 
         ?>
 
