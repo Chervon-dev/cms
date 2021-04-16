@@ -34,118 +34,26 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><a href="/users/33">Deshmukh</a></td>
-                            <td>@Genelia</td>
-                            <td>Unpublished</td>
-                            <td>
-                                <a href="/admin/show/comment/33" class="btn btn-change">
-                                    <i class="mdi me-2 mdi-eye"></i>
-                                    Show
-                                </a>
-                                <button class="btn btn-delete">
-                                    <i class="mdi me-2 mdi-delete"></i>
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td><a href="/users/33">Deshmukh</a></td>
-                            <td>@Ritesh</td>
-                            <td>Published</td>
-                            <td>
-                                <a href="/admin/show/comment/33" class="btn btn-change">
-                                    <i class="mdi me-2 mdi-eye"></i>
-                                    Show
-                                </a>
-                                <button class="btn btn-delete">
-                                    <i class="mdi me-2 mdi-delete"></i>
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="/users/33">Deshmukh</a></td>
-                            <td>@Govinda</td>
-                            <td>Unpublished</td>
-                            <td>
-                                <a href="/admin/show/comment/333" class="btn btn-change">
-                                    <i class="mdi me-2 mdi-eye"></i>
-                                    Show
-                                </a>
-                                <button class="btn btn-delete">
-                                    <i class="mdi me-2 mdi-delete"></i>
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="/users/33">Deshmukh</a></td>
-                            <td>@Hritik</td>
-                            <td>Published</td>
-                            <td>
-                                <a href="/admin/show/comment/33" class="btn btn-change">
-                                    <i class="mdi me-2 mdi-eye"></i>
-                                    Show
-                                </a>
-                                <button class="btn btn-delete">
-                                    <i class="mdi me-2 mdi-delete"></i>
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="/users/33">Deshmukh</a></td>
-                            <td>@Maruti</td>
-                            <td>Published</td>
-                            <td>
-                                <a href="/admin/show/comment/33" class="btn btn-change">
-                                    <i class="mdi me-2 mdi-eye"></i>
-                                    Show
-                                </a>
-                                <button class="btn btn-delete">
-                                    <i class="mdi me-2 mdi-delete"></i>
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td><a href="/users/33">Deshmukh</a></td>
-                            <td>@Sonu</td>
-                            <td>Published</td>
-                            <td>
-                                <a href="/admin/show/comment/33" class="btn btn-change">
-                                    <i class="mdi me-2 mdi-eye"></i>
-                                    Show
-                                </a>
-                                <button class="btn btn-delete">
-                                    <i class="mdi me-2 mdi-delete"></i>
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td><a href="/users/33">Deshmukh</a></td>
-                            <td>@Sonu</td>
-                            <td>Unpublished</td>
-                            <td>
-                                <a href="/admin/show/comment/33" class="btn btn-change">
-                                    <i class="mdi me-2 mdi-eye"></i>
-                                    Show
-                                </a>
-                                <button class="btn btn-delete">
-                                    <i class="mdi me-2 mdi-delete"></i>
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
+
+                        <?php foreach ($comments->items() as $comment): ?>
+                            <tr>
+                                <td><?= $comment->id ?></td>
+                                <td><a href="/users/<?= $comment->author_id ?>"><?= $comment->author ?></a></td>
+                                <td><?= formatDate($comment->date, DATE_FORMAT) ?></td>
+                                <td><?= $comment->is_publish == 1 ? 'Published' : 'Unpublished' ?></td>
+                                <td>
+                                    <a href="/admin/show/comment/<?= $comment->id ?>" class="btn btn-change">
+                                        <i class="mdi me-2 mdi-eye"></i>
+                                        Show
+                                    </a>
+                                    <button class="btn btn-delete">
+                                        <i class="mdi me-2 mdi-delete"></i>
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+
                         </tbody>
                     </table>
                 </div>

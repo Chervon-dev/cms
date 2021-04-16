@@ -164,7 +164,45 @@ const changeItem = {
     },
 
     comment: function (id) {
+        const formData = new FormData();
 
+        var text = $('#comment-text');
+        var textError = $('#comment-text + .error_admin');
+        var alertSuccess = $('#alert-update');
+
+        formData.append('id', id);
+        formData.append('text', text.val());
+
+        $.ajax({
+            url: '/admin/change/comment',
+            type: 'POST',
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+
+                if (result.includes('"empty_text"')) {
+                    changeItem.showError(textError, text, 'Text field cannot be empty');
+                } else {
+                    changeItem.hideError(textError, text);
+                }
+
+                if (result === '"Success!"') {
+                    $("#updatePost").attr('disabled', true);
+                    alertSuccess.text('You have successfully update!');
+                    alertSuccess.removeClass('alert-exit');
+                    alertSuccess.addClass('alert-active');
+
+                    setTimeout(() => {
+                        alertSuccess.removeClass('alert-active');
+                        alertSuccess.addClass('alert-exit');
+                        $("#updatePost").attr('disabled', false);
+                    }, 5000);
+                }
+
+            }
+        });
     },
 
 }

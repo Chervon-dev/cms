@@ -52,17 +52,17 @@ $theme->header('Update post', true);
                 </div>
             </div>
         </div>
-<!--        --><?php
-//
-//        $theme->block(
-//            'admin/list-comments',
-//            [
-//                'paginationParams' => $paginationParams,
-//                'comments' => $comments
-//            ]
-//        );
-//
-//        ?>
+        <?php
+
+        $theme->block(
+            'admin/list-comments',
+            [
+                'paginationParams' => $paginationParams,
+                'comments' => $comments
+            ]
+        );
+
+        ?>
     </div>
 
 <?php
